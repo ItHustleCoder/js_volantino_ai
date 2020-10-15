@@ -1,0 +1,148 @@
+#root, body, html {
+    box-sizing: border-box;
+    /* min-height: 100vh; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+.container{
+    margin-top: 90px;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    width: 600px;
+}
+
+
+.btn-vol{
+    height:110px;
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    margin-top: 150px;
+    border-radius: 50%;
+    background-color: #df2020;
+    font-weight: bold;
+    /* margin-top: 360px; */
+    /* position: fixed; */
+    left: 600px;
+    top: 300px;
+  
+  }
+  
+  .btn-reload {
+    background:  #00a900;
+    height:110px;
+    width: 120px;
+    /* margin-top: 360px; */
+  
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    margin-top: 150px;
+    border-radius: 50%;
+    font-weight: bold;
+    /* position: fixed; */
+    left: 600px;
+    top: 300px;
+  
+  
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 100px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+
+  .modal-content{
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    margin-right: 125px;
+    float: right;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+  }
+
+
+  .modal_off {
+    background-color:#663d8f;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    float: right;
+    margin-right: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    font-weight: bold;
+    font-size: 24px;  
+  
+  
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  #output{
+    color: teal;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  #command-left {
+      float: left;
+      display: none;
+      font-weight: bold;
+      font-size: 24px;
+      color: tomato;
+
+  }
+
+  #command-rigth {
+      float: right;
+        display: none;
+        font-weight: bold;
+      font-size: 24px;
+      color: tomato;
+
+}
+
+#show-card {
+    display: none;
+}
+
+    
