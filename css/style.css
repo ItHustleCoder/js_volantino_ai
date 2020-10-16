@@ -1,12 +1,13 @@
 #root, body, html {
     box-sizing: border-box;
+    
     /* min-height: 100vh; */
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
+    background: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -22,6 +23,7 @@ html {
     margin: 0 auto;
     justify-content: center;
     width: 600px;
+    
 }
 
 
@@ -36,8 +38,7 @@ html {
     border-radius: 50%;
     background-color: #df2020;
     font-weight: bold;
-    /* margin-top: 360px; */
-    /* position: fixed; */
+   
     left: 600px;
     top: 300px;
   
@@ -47,7 +48,6 @@ html {
     background:  #00a900;
     height:110px;
     width: 120px;
-    /* margin-top: 360px; */
   
     margin: 0 auto;
     text-align: center;
@@ -56,9 +56,8 @@ html {
     margin-top: 150px;
     border-radius: 50%;
     font-weight: bold;
-    /* position: fixed; */
     left: 600px;
-    top: 300px;
+    top: 300px; 
   
   
   }
@@ -145,4 +144,4 @@ html {
     display: none;
 }
 
-    
+
