@@ -40,7 +40,7 @@ let windowActive = false;
        
         //Share area
         {
-           indexes: ["condividi su whatsapp", "condividi su instagram", "condividi su google", "condividi su twitter"],
+           indexes: ["condividi whatsapp", "condividi instagram", "condividi google", "condividi twitter"],
            action: (i) => {
                if(i === 0) {
                     artyom.say("Certo attenzione sarà reindirezionato su la pagina what\'s up");
@@ -71,7 +71,7 @@ let windowActive = false;
 
        //Area social
        {
-           indexes: ["ti voglio bene", "ti amo",],
+           indexes: ["ti voglio bene", "ti amo", ],
            action: (i) => {
                if(i === 0) {
                 artyom.sayRandom([
@@ -101,19 +101,7 @@ let windowActive = false;
        },
 
        {
-           indexes:["apri categorie", "vai su categorie"],
-           action: (i) => {
-               if(i === 0 || i === 1) {
-                   artyom.say("Certo! Andiamo");
-                   setTimeout(() => {
-                        location.href = "./components/category.html";
-                   },4000);
-               }
-           }
-       },
-
-       {
-           indexes: ["chiudi *"],
+           indexes: ["chiudi tutto"],
            action: (e) => {
                artyom.say("Sarà immediatamente chiuso");
                showCard.style.display = "none";
@@ -144,28 +132,7 @@ let windowActive = false;
         },
 
         {
-            indexes: ["Lo sai chi e*", "come la vedi *" , "* e bravo"],
-            smart: true,
-            action: function(i, wildcard) {
-                var database = ["Andrew"];
-                if(i === 1) {
-                    if(database.indexOf(wildcard.trim().toLowerCase())) {
-                        artyom.say("Chi è?");
-                    }else {
-                        artyom.say("Non lo so chi e " + wildcard + "e non so dire se bravo o no");
-                    }
-                }else {
-                    if(database.indexOf(wildcard.toLowerCase.trim())){
-                        artyom.say("Certo che conosco chi è " + wildcard + "veramente bravo");
-                    }else {
-                        artyom.say("La mia memoria non e infinita quindi no lo so chi è " + wildcard);
-                    }
-                }
-            }
-        },
-
-        {
-            indexes: ["stop", "va bene va bene", "volantino stop"],
+            indexes: ["stop", "va bene va bene", "volanino stop"],
             action: (i) => {
                 if(i === 0 || i === 1) {
                     artyom.shutUp();      
@@ -181,14 +148,40 @@ let windowActive = false;
                 }
             }
         },
-        //Speacial Command 
+
+        //Ritornare al menu principale 
         {
-            indexes:["volantino la tua idea","volantino perchè sei nato"],
+            indexes: ["torna al menu principale" , "ritorna al menu"],
             action: (i) => {
-                if( i === 0) {
-                    artyom.say("Secondo Börje Ekholm! Ceo di Ericsson! la tecnologia digitale è con ogni probabilità il più potente elemento per intraprendere azioni che ci aiutano a frenare l’aumento delle temperature globali")
+                if(i === 0 ){
+                    artyom.say("Ok, ritorniamo al menu principale");
+                    setTimeout(() => {
+                        location.href = "../index.html";
+                    },4000); 
+                }
+            }
+        },
+
+        //Select function 
+        {
+            indexes: ["seleziona prodotto numero 1", "seleziona prodotto numero 2", "seleziona prodotto numero 3", "seleziona prodotto numero 4"],
+            action: (i) => {
+                if(i === 0) {
+                    artyom.say("Prodotto selezionato");
+                    document.getElementById('first_item').checked = true;
+                    
                 } else if( i === 1) {
-                    artyom.say("Il programmatore che mi ha create credevo che riesce creare qualcosa che stupisce il mondo !Il mio compito dimonstrarlo");
+                    artyom.say("Prodotto selezionato");
+                    document.getElementById('second_item').checked = true;
+                } else if ( i === 2) {
+                    artyom.say("Prodotto selezionato");
+                    document.getElementById('third_item').checked = true;
+                } else if ( i === 3) {
+                    artyom.say("Prodotto selezionato");
+                    document.getElementById('four_item').checked = true;
+                } else if ( i === 4 ) {
+                    artyom.say("Prodotto selezionato");
+                    document.getElementById('five_item').checked = true;
                 }
             }
         }
@@ -227,19 +220,10 @@ let windowActive = false;
             
         }).then(() => {
             if(_counter <= 2) {
-                artyom.say("Benvenuto");
+                // artyom.say("Benvenuto nella sezione categorie! qui puoi trovare i tutti prodotti! selezionare e anche comprare! resta con volantino per scoprire le novità");
             }
-            // artyom.when("SPEECH_SYNTHESIS_END", function(){
-            //     artyom.simulateInstruction("dimmi una barzeletta");
-
-            // })
-            artyom.simulateInstruction("volantino perchè sei nato");
-            // setTimeout(() => {
-                
-            //     artyom.simulateInstruction("volantino stop");
-            // },4000);
-            
-            
+             artyom.simulateInstruction("torna al menu principale");
+        
 
             console.log(artyom.getAvailableCommands());
 
