@@ -4,301 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Volantino Test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    <title>Volantino Test</title>
     <script src="./artyom.window.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Volantino Assistent in JS</h1>
+
+    <div class="wrapper">
+      <div class="breaking-news">
+        <div class="bn-title"><span></span></div>
+        <div class="news-ticker">
+            <div class="tickercontainer">
+                 <div class="mask">
+                      <div class="newsticker">
+                          <span> 
+                              <i class="fas">&raquo;</i><a href="#">Dici: "Ciao Volantino"</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici: "Apri + {nome} "</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici:"Chiudi + {nome}"</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici:"Volantino stop" per disattivare </a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici: "Dimmi una barzaletta"</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici:"Trova un prodotto in offerta"</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici: "Ti voglio bene"</a> 
+                              <i class="fas">&raquo;</i><a href="#">Dici: "Condividi + {what's up, instagram, facebook, google, twitter}</a>
+                          </span>
+                      </div>
+                  </div>
+             </div>
+         </div>
+    </div>
+      <audio id="audioMusic">
+        <source src="./Jump-SoundBible.com-1007297584.mp3">
+      </audio>
+      <a href="#" class="wave-btn" id="btn" onclick="bell()">
+        <span class="wave-btn_text" id="textB">Start</span>
+        <span class="wave-btn_waves" id="wave-btn_waves"></span>
+    </a>
+    <div class="share-box">
+    <ul>
+      <li class="facebook" id="facebook"><a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+      <li class="twitter" id="twitter"><a href="#"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+      <li class="instagram" id="instagram"><a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+      <li class="google" id="gmail"><a href="#"><i class="fa fa-google fa-2x" aria-hidden="true"></i></a></li>
+      <li class="whatsapp" id="whatsapp"><a href="#"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+
+    <div class="span-box">
+      <span id="output">Volantino più</span>  
+    </div>
+    
+  </div> 
         
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Cerca:...</p>
-            </div>
-        </div>
-        <div id="command-left">
-            <p>Apri</p>
-            <p>Chiudi</p>    
-        </div>
-        <div id="command-rigth">
-            <p>Info</p>
-            <p>Trova</p>
-
-        </div>
-        <div>
-            <audio id="audioMusic">
-                <source src="./Jump-SoundBible.com-1007297584.mp3" type="audio/mpeg">
-            </audio>
-            <button id="btn" onclick="bell()" class="btn-vol">VolantinoPiù</button>
-        </div>
-        <br>
-        <span id="output"></span>
-    
-
-
-
- <div id="show-card">   
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="https://dummyimage.com/600x400/000/fff.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>  
-
-
-</div>
-
-
+  <script src="./app.js"></script>
    
-    <script>
-       
-        const btn = document.getElementById('btn');
-        const modal = document.getElementById('myModal')
-        const span = document.getElementById('output');
-        const commandAction = document.getElementById('command-left');
-        const commandInfo = document.getElementById('command-rigth');
-        const showCard = document.getElementById('show-card');
-
-        const audio = document.getElementById('audioMusic');
-         //Bind Audio button
-        function bell() {
-            audio.play();
-        }
-
-    const artyom = new Artyom();
-    
-    let windowActive = false;
-
-    window.onload = function(){
-        if(artyom.Device.isChrome){
-            let counter = 0;
-            
-            // Stampa le frase in video 
-            artyom.redirectRecognizedTextOutput(function(text, isFinal) {
-                if(isFinal) {
-                    span.innerHTML = "";
-                } else {
-                    span.innerHTML = text;
-                }
-            });
-
-          
-            
-
-
-            //Get all command;
-            const actionCommand = [
-                {
-                    indexes: ["apri"],
-                    action: () => {
-                        artyom.say("Ok");
-                       
-                        setTimeout(() => {
-                            modal.style.display = "block";
-                        }, 6000)
-                    }
-                },
-
-                {
-                    indexes: ["dami informazioni"],
-                    action: (i) => {
-                        artyom.say("Sull lato sinistro troverai le commande di azione");
-                        setTimeout(() =>{
-                            commandAction.style.display = "block";
-                            artyom.say("Su lato destro commandi in più");
-                            windoActive = true;
-                        },3000)
-                        setTimeout(() => {
-                            commandInfo.style.display = "block";
-                            windowActive = true;
-                        },6000)
-                        
-                    }
-
-                },
-
-                {
-                    indexes: ["trova promozioni dell messe", "trova ricetto del giorno", "trova telecomander"],
-                    action: (i) => {
-                        if(i === 0){
-                            artyom.say("Prego le promozioni del messe sono :");
-                            setTimeout(() => {
-                                showCard.style.display = "block";
-                            },2500)
-                        } 
-                    }
-                },
-
-                {
-                    indexes: ["chiudi tutto"],
-                    action: (e) => {
-                        artyom.say("Sarà immediatamente chiuso");
-                        showCard.style.display = "none";
-
-                    }
-                }
-            
-            
-            
-            ]
-            artyom.addCommands(actionCommand);
-
-            
-
-                //Here start Recognition :        
-                btn.addEventListener("click", () => {
-                    counter++;
-                    console.log(counter);     
-                     
-                    
-                    
-                    
-                    if(btn.classList.contains("btn-vol")) {
-                        btn.classList.remove("btn-vol");
-                        btn.classList.add("btn-reload");
-                        
-                        // Start recgontiton
-                    
-                            artyom.initialize({
-                                lang: "it-IT",
-                                continuos: true,
-                                debug: true,
-                                listen: true,
-                                
-                            }).then(() => {
-                                if(counter <= 2) {
-                                    // artyom.say("Buongiorno a tutti");
-                                }
-                                artyom.simulateInstruction("trova promozioni dell messe");
-                               
-
-                                console.log(artyom.getAvailableCommands());
-
-                            }).catch((err) => {
-                                console.error("Something is wrong in startRecogntiton", err);
-                            })
-                            
-                    
-                    //Here Stop recgontiton
-                    }else {
-                        if(btn.classList.contains("btn-reload")) {
-                            btn.classList.remove("btn-reload");
-                            btn.classList.add("btn-vol")
-
-                            artyom.fatality().then(() => {
-                                if(counter < 3){
-                                    artyom.say("Arrividerci");
-                                }
-                            }).catch((err) => {
-                                console.error("Something is wrong in Stop function", err);
-                            })
-
-                        }
-                    }
-                });
-            
-            
-        //Test if work in Android/IOS device    
-        if(!artyom.Device.isMobile){
-                console.log("Artyom can talk and obey commands in this browser, however the voice will be the default voice of the device. Cannot force language here.");
-            }else{
-                
-            }
-        }else{
-            alert("Artyom only works with The Google Chrome Browser !");
-        }
-    };
-
-    </script>
 </body>
 </html>
