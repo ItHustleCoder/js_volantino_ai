@@ -199,26 +199,26 @@ let windowActive = false;
         },
 
 
-        {
-            indexes: ["Lo sai chi e *", "come la vedi *" , "* e bravo"],
-            smart: true,
-            action: function(i, wildcard) {
-                var database = ["Andrew", "tony", "onofrio"];
-                if(i === 1) {
-                    if(database.indexOf(wildcard.trim())) {
-                        artyom.say("Chi è?");
-                    }else {
-                        artyom.say("Non lo so chi e " + wildcard + "e non so dire se bravo o no");
-                    }
-                }else {
-                    if(database.indexOf(wildcard.trim())){
-                        artyom.say("Certo che conosco " + wildcard + " lui e veramente bravo");
-                    }else {
-                        artyom.say("La mia memoria non e infinita quindi no lo so chi è " + wildcard);
-                    }
-                }
-            }
-        },
+        // {
+        //     indexes: ["Lo sai chi e *", "come la vedi *" , "* e bravo"],
+        //     smart: true,
+        //     action: function(i, wildcard) {
+        //         var database = ["Andrew", "tony", "onofrio"];
+        //         if(i === 1) {
+        //             if(database.indexOf(wildcard.trim())) {
+        //                 artyom.say("Chi è?");
+        //             }else {
+        //                 artyom.say("Non lo so chi e " + wildcard + "e non so dire se bravo o no");
+        //             }
+        //         }else {
+        //             if(database.indexOf(wildcard.trim())){
+        //                 artyom.say("Certo che conosco " + wildcard + " lui e veramente bravo");
+        //             }else {
+        //                 artyom.say("La mia memoria non e infinita quindi no lo so chi è " + wildcard);
+        //             }
+        //         }
+        //     }
+        // },
 
         {
             indexes: ["stop", "va bene va bene", "volantino stop"],
@@ -278,6 +278,52 @@ let windowActive = false;
         }
     });
 
+
+    //Repeat after me 
+    artyom.on(['Ripeti dopo di me *'] , true).then(function(i, wildcard) {
+        artyom.say("Ha detto che: " + wildcard);
+    });
+
+    //Lo sai chi e 
+    artyom.on(['Lo sai chi e *', 'Cosa pensi di *'], true).then(function(i,wildcard) {
+    if( i === 0) {
+        if(wildcard === 'andrew' || wildcard === 'onofrio' || wildcard === 'rossano'){
+            artyom.say('Certo che conosco chi e: ' + wildcard, {
+                onEnd: () => {
+                    buttonOff();
+                }
+            });            
+        } else {
+            artyom.say('Non lo so chi e :' + wildcard, {
+                onEnd: () => {
+                    buttonOff();
+                }
+            });
+        }
+    } else if( i === 1) {
+        if(wildcard === 'andrew'){
+            artyom.say('Non possono essere assunte come testimoni le persone aventi nella causa un interesse che potrebbe legittimare la loro partecipazione', {
+                onEnd: () => {
+                    buttonOff();
+                }
+            });
+        } else if ( wildcard === 'rossano') {
+            artyom.say( wildcard + ': Il nostro capo che inspirato Andrew e Onofrio', {
+                onEnd: () => {
+                    buttonOff();
+                }
+            });
+        } else if (wildcard === 'onofrio') {
+            artyom.say( wildcard + ': e un grande programmatore con esperienza, con lui ci riusciamo migliorare le mie abbilità', {
+                onEnd: () => {
+                    buttonOff();
+                }
+            });
+        }
+    }
+
+    
+    });
 
 
 
@@ -341,9 +387,7 @@ let windowActive = false;
             if(_counter <= 2) {
                 artyom.say("Benvenuto");
             }
-            // artyom.when("SPEECH_SYNTHESIS_END", function(){
-            //     artyom.simulateInstruction("dimmi una barzeletta");
-            
+           
             
             // Error recognition block
             artyom.when("NOT_COMMAND_MATCHED", function(){
@@ -378,7 +422,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            artyom.simulateInstruction("");
+            artyom.simulateInstruction('apri categorie');
                        
             console.log(artyom.getAvailableCommands());
 
