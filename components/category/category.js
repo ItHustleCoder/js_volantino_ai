@@ -180,7 +180,7 @@ let windowActive = false;
                 
                 artyom.say("Ok, ritorniamo al menù", {
                     onEnd: () => {
-                        location.href = "../index.html";
+                        location.href = "../main.html";
                     }
                 });
                 

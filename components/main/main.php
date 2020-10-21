@@ -1,16 +1,24 @@
+<?php 
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./main.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    <title>Volantino Test</title>
     <title>Volantino più</title>
-    <script src="./artyom.window.js"></script>
+    <script src="../../artyom.window.js"></script>
 </head>
 <body>
 
     <div class="wrapper">
+      <div class="boxBtnLogOut">
+        <button class="btnLogOut">LogOut</button>
+      </div>
       <div class="breaking-news">
         <div class="bn-title"><span></span></div>
         <div class="news-ticker">
@@ -35,7 +43,7 @@
          </div>
     </div>
       <audio id="audioMusic">
-        <source src="./Jump-SoundBible.com-1007297584.mp3">
+        <source src="../../Jump-SoundBible.com-1007297584.mp3">
       </audio>
       <a href="#" class="wave-btn" id="btn" onclick="bell()">
         <span class="wave-btn_text" id="textB">Start</span>
@@ -57,7 +65,14 @@
     
   </div> 
         
-  <script src="./app.js"></script>
+  <script src="./main.js"></script>
    
 </body>
 </html>
+
+<?php
+}else{
+     header("Location: ../../index.php");
+     exit();
+}
+ ?>

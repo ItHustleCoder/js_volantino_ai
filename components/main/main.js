@@ -159,7 +159,7 @@ let windowActive = false;
                     },
                     onEnd : () => {
                         console.log('Text has been finished');
-                        location.href = "./components/category.html";
+                        location.href = "../category/category.html";
                     }
                    });
                
@@ -422,7 +422,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            // artyom.simulateInstruction("vai alla sezione di offerte");
+            artyom.simulateInstruction("apri categorie");
                        
             console.log(artyom.getAvailableCommands());
 
