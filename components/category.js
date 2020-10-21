@@ -308,12 +308,12 @@ let windowActive = false;
                     artyom.say("Mi dispiace, non ho capito", {
                         onStart: () => {
                             buttonOff();
-                            artyom.fatality().then(() => {
-                                console.log("Not recognized command");
-                            });
+                            // artyom.fatality().then(() => {
+                            //     console.log("Not recognized command");
+                            // });
                         },
                         onEnd: () => {
-                            artyom.shutUp();
+                            // artyom.shutUp();
                         }
                     });
                     _errCounter ++;
@@ -357,12 +357,7 @@ let windowActive = false;
         //Here Stop recgontiton
         }else {
             if(btn.classList.contains('wave-btn_reload') && wave.classList.contains('wave-btn_waves_reload')){
-                btn.classList.remove('wave-btn_reload');
-                btn.classList.add('wave-btn');
-                wave.classList.remove('wave-btn_waves_reload');
-                wave.classList.add('wave-btn_waves');
-                textButton.innerHTML = 'Start';
-
+               buttonOff();
                 artyom.fatality().then(() => {
                     artyom.shutUp();
                     if(_counter <= 3){
@@ -391,11 +386,7 @@ let windowActive = false;
             wave.classList.remove('wave-btn_waves_reload');
             wave.classList.add('wave-btn_waves');
             textButton.innerHTML = 'Start';
-            artyom.fatality().then(() => {
-            artyom.shutUp();   
-            }).catch((err) => {
-                console.error("Something is wrong in Stop function", err);
-            })
+           
     };
 
 

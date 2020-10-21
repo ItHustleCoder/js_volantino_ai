@@ -167,6 +167,23 @@ let windowActive = false;
            
        },
 
+       //Area offerte 
+
+       {
+            indexes: ["vai alla sezione di offerte"],
+            action: () => {
+                artyom.say("Ok. Ecco le offerte", {
+                    onStart : () => {
+                        console.log('Start command Offerte');
+                    },
+                    onEnd: () => {
+                        location.href = "./components/offerte/offerte.html";
+                        console.log('ridirection offerte')
+                    }
+                });
+            }     
+       },
+
        {
            indexes: ["chiudi *"],
            action: (e) => {
@@ -198,28 +215,6 @@ let windowActive = false;
             }
         },
 
-
-        // {
-        //     indexes: ["Lo sai chi e *", "come la vedi *" , "* e bravo"],
-        //     smart: true,
-        //     action: function(i, wildcard) {
-        //         var database = ["Andrew", "tony", "onofrio"];
-        //         if(i === 1) {
-        //             if(database.indexOf(wildcard.trim())) {
-        //                 artyom.say("Chi è?");
-        //             }else {
-        //                 artyom.say("Non lo so chi e " + wildcard + "e non so dire se bravo o no");
-        //             }
-        //         }else {
-        //             if(database.indexOf(wildcard.trim())){
-        //                 artyom.say("Certo che conosco " + wildcard + " lui e veramente bravo");
-        //             }else {
-        //                 artyom.say("La mia memoria non e infinita quindi no lo so chi è " + wildcard);
-        //             }
-        //         }
-        //     }
-        // },
-
         {
             indexes: ["stop", "va bene va bene", "volantino stop"],
             action: (i) => {
@@ -231,25 +226,25 @@ let windowActive = false;
             }
         },
         //Speacial Command 
-        // {
-        //     indexes: _specialCommand,
-        //     action: (i) => {
-        //         if( i === 0) {
-        //             artyom.say("Secondo Börje Ekholm! Ceo di Ericsson! la tecnologia digitale è con ogni probabilità il più potente elemento per intraprendere azioni che ci aiutano a frenare l’aumento delle temperature globali")
-        //         } else if( i === 1 || i === 2) {
-        //             artyom.say("Il programmatore che mi ha create credevo che riesce creare qualcosa che stupisce il mondo !Il mio compito dimonstrarlo", {
-        //                 onStart: () => {
-        //                     console.log('The text has been started');
-        //                 },
-        //                 onEnd : () => {
-        //                     console.log('Text has been finished');
-        //                     buttonOff();
-        //                 }
-        //             });
+        {
+            indexes: _specialCommand,
+            action: (i) => {
+                if( i === 0) {
+                    artyom.say("Secondo Börje Ekholm! Ceo di Ericsson! la tecnologia digitale è con ogni probabilità il più potente elemento per intraprendere azioni che ci aiutano a frenare l’aumento delle temperature globali")
+                } else if( i === 1 || i === 2) {
+                    artyom.say("Il programmatore che mi ha create credevo che riesce creare qualcosa che stupisce il mondo !Il mio compito dimonstrarlo", {
+                        onStart: () => {
+                            console.log('The text has been started');
+                        },
+                        onEnd : () => {
+                            console.log('Text has been finished');
+                            buttonOff();
+                        }
+                    });
                     
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
    
    
     
@@ -381,26 +376,31 @@ let windowActive = false;
             lang: "it-IT",
             continuos: true,
             debug: true,
-            listen: true,
+            listen: true
             
         }).then(() => {
             if(_counter <= 2) {
                 artyom.say("Benvenuto");
             }
            
-            
+         
+
+
             // Error recognition block
-            artyom.when("NOT_COMMAND_MATCHED", function(){
+            if(artyom.when("TEXT_RECOGNIZED", function(){
+                console.log('Text is recognized');
+            })){
+
+            
+            }else ( artyom.when("NOT_COMMAND_MATCHED", function(){
                 if(_errCounter % 2 == 0) {
+                    console.log('Not recognize command');
                     artyom.say("Mi dispiace, non ho capito", {
                         onStart: () => {
-                            buttonOff();
-                            artyom.fatality().then(() => {
-                                console.log("Not recognized command");
-                            });
+                           console.log('No command matched');
                         },
                         onEnd: () => {
-                            artyom.shutUp();
+                            // artyom.shutUp();
                         }
                     });
                     _errCounter ++;
@@ -418,11 +418,11 @@ let windowActive = false;
                     });
                     _errCounter++;
                 }
-            });
+            }));
 
             
             //Sicmundus
-            artyom.simulateInstruction('apri categorie');
+            // artyom.simulateInstruction("vai alla sezione di offerte");
                        
             console.log(artyom.getAvailableCommands());
 
@@ -435,8 +435,13 @@ let windowActive = false;
         }else {
             if(btn.classList.contains('wave-btn_reload') && wave.classList.contains('wave-btn_waves_reload')){
                 buttonOff();
+                artyom.fatality().then(() => {
+                    artyom.shutUp();   
+                    }).catch((err) => {
+                        console.error("Something is wrong in Stop function", err);
+                    })
                     if(_counter <= 3){
-                        artyom.say("Ci vediamo");
+                        // artyom.say("");
                     }
               
             }
@@ -458,11 +463,7 @@ let windowActive = false;
                 wave.classList.remove('wave-btn_waves_reload');
                 wave.classList.add('wave-btn_waves');
                 textButton.innerHTML = 'Start';
-                artyom.fatality().then(() => {
-                artyom.shutUp();   
-                }).catch((err) => {
-                    console.error("Something is wrong in Stop function", err);
-                })
+               
         }
 
 

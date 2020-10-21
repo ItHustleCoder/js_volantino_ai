@@ -13,10 +13,16 @@ body{
   background-color: black;
 }
 
+
+@media screen and (max-width: 1280px){ div.contentblock {width: 1200px;}}
+ @media screen and (max-width: 1140px){ div.contentblock {width: 1024px;}}
+@media screen and (max-width: 992px){ div.contentblock {width: 970px;}}
+
 /* Main style btn*/
 .wrapper {
   width: 100%;
-  min-height: 100%;
+  min-width: 400px;
+  min-height: 873px;
   height: 100%;
   overflow: hidden;
   display: -webkit-flex;
@@ -442,7 +448,8 @@ body{
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 550px;
+  min-width: 550px;
+  max-width: 100%;
 }
 
 .share-box ul {
@@ -548,7 +555,7 @@ body{
       margin-top: 10px;
   }
   .wrapper ul li.google{
-      margin-left: 60px;
+      /* margin-left: 60px; */
   }
 }
 
