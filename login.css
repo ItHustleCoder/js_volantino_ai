@@ -5,6 +5,7 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
+	min-width: 640px;
 
 }
 html {
@@ -17,8 +18,11 @@ html {
 	box-sizing: border-box;
 }
 
+
 .box{
-width: 400px;
+width: 40%;
+max-width: 400px;
+min-width: 400px;
 padding: 40px;
 position: absolute;
 top: 60%;

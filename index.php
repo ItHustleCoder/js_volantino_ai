@@ -4,6 +4,7 @@
 <head>
 	<title>LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="login.css">
+	<meta name="viewport" content="width-device-width, inital-scale=1.0"/>
 </head>
 <div class="container">
 	<div class="img-box">
