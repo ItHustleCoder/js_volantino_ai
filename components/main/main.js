@@ -159,7 +159,7 @@ let windowActive = false;
                     },
                     onEnd : () => {
                         console.log('Text has been finished');
-                        location.href = "../category/category.html";
+                        location.href = "../category/category.php";
                     }
                    });
                
@@ -177,7 +177,7 @@ let windowActive = false;
                         console.log('Start command Offerte');
                     },
                     onEnd: () => {
-                        location.href = "./components/offerte/offerte.html";
+                        location.href = "./components/offerte/offerte.php";
                         console.log('ridirection offerte')
                     }
                 });

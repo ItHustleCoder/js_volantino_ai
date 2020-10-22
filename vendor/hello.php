@@ -11,6 +11,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 </head>
 <body>
      <div class="container">
+          <div class="img-box">
+               <img src="../src/rossanosvg.png" alt="logo">
+               <blockquote class="blcokquote">
+               <p>Siate affamati! Siate folli!</p>
+               <cite>Steve Jobs</cite>
+          </blockquote>
+          </div>
           <h1 class="title">Benvenuto, <?php echo $_SESSION['name']; ?></h1>
           <div class="logout-box">
                <a onclick="check()" class="logout" href="./logout.php">Logout</a>
@@ -34,6 +41,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     clearInterval(timerId)
                     console.log('finito');
                     location.href = "../components/main/main.php";
+                   
                },time*1100);
 
           })

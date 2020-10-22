@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +9,16 @@
 	<div class="img-box">
 		<img class="App-logo" src="./src/logo.svg" alt="logo"/>
 	</div>
-     <form class="box" action="./vendor/login.php" method="post" autocomplete="off" spellcheck="false">
+     <form class="box" id="form" action="./vendor/login.php" method="post" autocomplete="off" spellcheck="false">
      	<h1>LOGIN</h1>
 		 <?php if (isset($_GET['error'])) { ?>
-     		<p class="error"><?php echo $_GET['error']; ?></p>
+     		<p class="error" id="error"><?php echo $_GET['error']; ?></p>
 		 <?php } ?>
 		
-     	<input type="text" name="uname" placeholder="Login"><br>
-     	<input type="password" name="password" placeholder="Password"><br>
+     	<input type="text" id="name" name="uname" placeholder="Login"><br>
+     	<input type="password" id="pass" name="password" placeholder="Password"><br>
 
-     	<button class="thisBtn" type="submit">Login</button>
+     	<button class="thisBtn" id="btn_check"  type="submit">Login</button>
      </form>
 </div>
 

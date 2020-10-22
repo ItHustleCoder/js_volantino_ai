@@ -1,7 +1,23 @@
-<?php 
-session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+<?php
+$inactive = 3000;
+ini_set('session.gc_maxlifetime', $inactive);
+
+ session_start();
+if (!($_SESSION['user_name'])) {
+  header('Location: ../../index.php');
+}
+/* Set timer logout */
+if (isset($_SESSION['testing']) && (time() - $_SESSION['testing'] > $inactive)) {
+  session_destroy();
+  session_unset();
+  // header('Location : ../../index.php');
   
+}
+
+$_SESSION['testing'] = time();
+  
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +33,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
     <div class="wrapper">
       <div class="boxBtnLogOut">
-        <button class="btnLogOut">LogOut</button>
+      <a href="../../vendor/logout.php">
+      <button class="btnLogOut">LogOut</button>
+      </a>
       </div>
       <div class="breaking-news">
         <div class="bn-title"><span></span></div>
@@ -70,9 +88,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 </body>
 </html>
 
-<?php
-}else{
-     header("Location: ../../index.php");
-     exit();
-}
- ?>
+
