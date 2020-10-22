@@ -410,7 +410,7 @@ body{
     display: inline;
     text-align: center;
     position: absolute;
-    top: 150px;
+    top: 20%;
     max-width: 100%;
     max-height: 30px;
     min-width: 400px;
@@ -443,11 +443,10 @@ body{
 /* Share Pannel {Google Twiter Instagram Whats'up} */
 .share-box {
   position: absolute;
-  top: 80%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 550px;
-  max-width: 100%;
+  min-width: 374px;
 }
 
 .share-box ul {
@@ -574,7 +573,7 @@ body{
 
 
 /* Comand line */
-.breaking-news{height:40px;margin:15px 0;clear:both;position: fixed;}
+.breaking-news{height:40px;margin:15px 0;clear:both;position: fixed; top:34%}
 .breaking-news a {
   color: tomato;
   font-size: 24px;
@@ -612,7 +611,7 @@ body{
   max-width: 80px;
   position: fixed;
   top: 5%;
-  right: 10%;
+  right: 13%;
   width: 100%;
 
 }

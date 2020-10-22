@@ -43,6 +43,9 @@
             "barzelletta del giorno"
         ];
        
+        const _logOut = [
+            "volantino esci dal account", "volantino attiva protocollo di sicurezza"
+        ];
 //Bind Audio button
  function bell() {
      audio.play();
@@ -188,8 +191,7 @@ let windowActive = false;
            indexes: ["chiudi *"],
            action: (e) => {
                artyom.say("Sarà immediatamente chiuso");
-               showCard.style.display = "none";
-
+               
            }
        },
 
@@ -321,6 +323,30 @@ let windowActive = false;
     });
 
 
+    //LogOut 
+
+    artyom.on(_logOut).then(function(i) {
+        switch(i) {
+            case 0: 
+                artyom.say('Ok boss: Attivo protocollo di sicurezza', {
+                    onEnd :() => {
+                        location.href = "../../vendor/logout.php";
+                    }
+                });
+                break;
+            case 1: 
+                artyom.say('Ok boss: protocollo attivato', {
+                    onEnd: () => {
+                        setTimeout(() => {
+                            location.href = "../../vendor/logout.php";
+                        },1000);
+                    }
+                })
+                
+        }
+    });
+
+
 
     //Promp test {NB this method disable all comadns befoure this will be executed }
 
@@ -408,12 +434,10 @@ let windowActive = false;
                     artyom.say("Non ho capito per favore ripeti", {
                         onStart: () => {
                             buttonOff();
-                            artyom.fatality().then(() => {
-                                console.log("Not recognized command");
-                            });
+                           
                         },
                         onEnd: () => {
-                            artyom.shutUp();
+                            console.log("Dotn understend");
                         }
                     });
                     _errCounter++;

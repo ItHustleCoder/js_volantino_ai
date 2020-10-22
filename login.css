@@ -5,7 +5,8 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
-	min-width: 640px;
+	overflow-y: hidden;
+	overflow-x: hidden;
 
 }
 html {
@@ -20,14 +21,8 @@ html {
 
 
 .box{
-width: 40%;
-max-width: 400px;
-min-width: 400px;
+width: 100%;
 padding: 40px;
-position: absolute;
-top: 60%;
-left: 50%;
-transform: translate(-50%,-50%);
 background: #34495e;
 text-align: center;
 }
@@ -84,51 +79,7 @@ text-align: center;
 	width: 700px;
 }
 
-/* form {
-	width: 100%;
-	border: 2px solid #ccc;
-	padding: 50px;
-	background: rgb(51, 175, 212);
-	border-radius: 15px;
-}
 
-h2 {
-	text-align: center;
-	margin-bottom: 40px;
-}
-
-input {
-	display: block;
-	border: 2px solid #ccc;
-	width: 95%;
-	padding: 10px;
-	margin: 10px auto;
-	border-radius: 5px;
-}
-label {
-	color: black;
-	font-size: 18px;
-	padding: 10px;
-	font-weight: bold;
-}
-
-button {
-	float: right;
-	background: #555;
-	padding: 10px 15px;
-	color: #fff;
-	border-radius: 5px;
-	margin-right: 10px;
-	border: none;
-	width: 120px;
-	color: lawngreen;
-	font-weight: bold;
-	
-}
-button:hover{
-	opacity: .7;
-	background-color: crimson;
-} */
 .error {
    background: #F2DEDE;
    color: #A94442;
@@ -138,11 +89,7 @@ button:hover{
    margin: 20px auto;
 }
 
-/* h2 {
-	text-align: center;
-	color: black;
-	font-weight: bold;
-} */
+
 
 a {
 	float: right;
@@ -177,18 +124,17 @@ a:hover{
 
 
 
-
+.box-logo {
+	text-align: center;
+	justify-content: center;
+	margin: 0 auto;
+	padding-left: 100px;
+	padding-right: 100px;
+}
 
 
 .img-box {
-    width: 100px;
-    height: 188px;
-    text-align: center;
-	margin: 0 auto;
-	margin-left: 205px;
-	margin-bottom: 20px;
-    
-    
+    width: 100%;
   }
 
 
@@ -199,7 +145,6 @@ a:hover{
 	justify-content: center;
 	margin: 0 auto;
 	pointer-events: none;
-    /* margin-left: -20px; */
   }
   
   @media (prefers-reduced-motion: no-preference) {
