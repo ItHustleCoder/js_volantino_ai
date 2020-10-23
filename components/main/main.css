@@ -630,3 +630,70 @@ body{
 .btnLogOut:hover{
   background-color: #2ecc71;
 }
+
+
+.blink {
+	-webkit-animation: blink 2s linear infinite; 
+	animation: blink 2s linear infinite; 
+  font-weight: bold;
+  width: 100%;
+  color: #F00;
+  padding-left: 15px;
+  
+}
+
+@-webkit-keyframes blink { 
+	0% { color: #F00; }
+	50% { color: #FBB; }
+	100% { color: #F00; }
+}
+
+@keyframes blink {  
+	0% { color: #F00; }
+	50% { color: #FBB; }
+	100% { color: #F00; } 
+}
+
+.blink-none {
+  display: none;
+}
+
+.record {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #F00;
+  display: block;
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  -webkit-animation: blink 2s linear infinite; 
+  animation: blink 2s linear infinite; 
+  animation-name: record;
+
+}
+
+@-webkit-keyframes record { 
+	0% { background-color: #F00; width: 15px; height: 15px; top: 5%; }
+	50% { background-color: #FBB; width: 20px; height: 20px; top: 0% }
+	100% { background-color: #F00; width: 15px; height: 15px; top: 5%}
+}
+
+@keyframes record {  
+  0% { background-color: #F00; width: 15px; height: 15px; top: 5%; }
+	50% { background-color: #FBB; width: 20px; height: 20px; top: 0% }
+	100% { background-color: #F00; width: 15px; height: 15px; top: 5%}
+}
+
+
+.record-none {
+  display: none;
+}
+
+
+.blink-box {
+  width: 150px;
+  height: 60px;
+  position: relative;
+  margin-top: 15px;
+}

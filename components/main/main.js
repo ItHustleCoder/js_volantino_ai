@@ -8,6 +8,8 @@
        const commandInfo = document.getElementById('command-rigth');
        const showCard = document.getElementById('show-card');
        const audio = document.getElementById('audioMusic');
+       const blinkText = document.getElementById('blink-box');
+       const spanRecord = document.getElementById('record');
 
        
        //DIZIONARIO
@@ -44,7 +46,7 @@
         ];
        
         const _logOut = [
-            "volantino esci dal account", "volantino attiva protocollo di sicurezza"
+            "esci dall'account", "attiva protocollo di sicurezza"
         ];
 //Bind Audio button
  function bell() {
@@ -173,15 +175,15 @@ let windowActive = false;
        //Area offerte 
 
        {
-            indexes: ["vai alla sezione di offerte"],
+            indexes: ["vai alla sezione prodotti"],
             action: () => {
-                artyom.say("Ok. Ecco le offerte", {
+                artyom.say("Ok. Entro nella sezione di prodotti", {
                     onStart : () => {
-                        console.log('Start command Offerte');
+                        console.log('Start command PRODOTTI');
                     },
                     onEnd: () => {
-                        location.href = "./components/offerte/offerte.php";
-                        console.log('ridirection offerte')
+                        location.href = "../prodotti/prodotti.php";
+                        console.log('ridirection.....');
                     }
                 });
             }     
@@ -390,19 +392,18 @@ let windowActive = false;
         
         
         if(btn.classList.contains('wave-btn') && wave.classList.contains('wave-btn_waves')) {
-            btn.classList.remove('wave-btn');
-            btn.classList.add('wave-btn_reload');
-            wave.classList.remove('wave-btn_waves');
-            wave.classList.add('wave-btn_waves_reload');
-            textButton.innerHTML = 'Stop';
+           buttonON();
+           
 
             
 // Start recgontiton        
         artyom.initialize({
             lang: "it-IT",
-            continuos: true,
+            continuous: true,
             debug: true,
-            listen: true
+            listen: true,
+            name: 'volantino'
+
             
         }).then(() => {
             if(_counter <= 2) {
@@ -414,11 +415,25 @@ let windowActive = false;
 
             // Error recognition block
             if(artyom.when("TEXT_RECOGNIZED", function(){
-                console.log('Text is recognized');
-            })){
+                console.log('Text is recognized');            
+            }));
+
+
+            if(artyom.when('COMMAND_RECOGNITION_START', function() {
+                console.log('Artyom starts to listening to your commands');
+                
+            }));
+
+
+            if(artyom.when('COMMAND_RECOGNITION_END', function() {
+                console.log("artyom doesn\'t listen anymore to your commands");
+                buttonOff();
+
+               
+            }));
 
             
-            }else ( artyom.when("NOT_COMMAND_MATCHED", function(){
+            if ( artyom.when("NOT_COMMAND_MATCHED", function(){
                 if(_errCounter % 2 == 0) {
                     console.log('Not recognize command');
                     artyom.say("Mi dispiace, non ho capito", {
@@ -426,18 +441,19 @@ let windowActive = false;
                            console.log('No command matched');
                         },
                         onEnd: () => {
-                            // artyom.shutUp();
+                            artyom.shutUp();
                         }
                     });
                     _errCounter ++;
                 } else {
                     artyom.say("Non ho capito per favore ripeti", {
                         onStart: () => {
-                            buttonOff();
+                           
                            
                         },
                         onEnd: () => {
                             console.log("Dotn understend");
+                            artyom.shutUp();
                         }
                     });
                     _errCounter++;
@@ -446,7 +462,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            artyom.simulateInstruction("apri categorie");
+            // artyom.simulateInstruction("volantino vai alla sezione prodotti");
                        
             console.log(artyom.getAvailableCommands());
 
@@ -459,6 +475,7 @@ let windowActive = false;
         }else {
             if(btn.classList.contains('wave-btn_reload') && wave.classList.contains('wave-btn_waves_reload')){
                 buttonOff();
+                   
                 artyom.fatality().then(() => {
                     artyom.shutUp();   
                     }).catch((err) => {
@@ -487,7 +504,23 @@ let windowActive = false;
                 wave.classList.remove('wave-btn_waves_reload');
                 wave.classList.add('wave-btn_waves');
                 textButton.innerHTML = 'Start';
+                blinkText.classList.remove('blink');
+                blinkText.classList.add('blink-none');
+                spanRecord.classList.remove('record');
+                spanRecord.classList.add('record-none');
                
+        }
+
+        function buttonON() {
+            btn.classList.remove('wave-btn');
+            btn.classList.add('wave-btn_reload');
+            wave.classList.remove('wave-btn_waves');
+            wave.classList.add('wave-btn_waves_reload');
+            textButton.innerHTML = 'Stop';
+            blinkText.classList.remove('blink-none');
+            blinkText.classList.add('blink');
+            spanRecord.classList.remove('record-none');
+            spanRecord.classList.add('record');
         }
 
 
@@ -499,6 +532,6 @@ let windowActive = false;
                
            }
        }else{
-           alert("Artyom only works with The Google Chrome Browser !");
+           alert("Artyom only works with The Google Chrome Browser!");
        }
    };

@@ -26,7 +26,7 @@ $_SESSION['testing'] = time();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
     <link rel="icon" href="../../src/favicon.ico"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    <title>Volantino Test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Volantino più</title>
     <script src="../../artyom.window.js"></script>
 </head>
@@ -37,6 +37,10 @@ $_SESSION['testing'] = time();
       <a href="../../vendor/logout.php">
       <button class="btnLogOut">LogOut</button>
       </a>
+      <div class="blink-box">
+        <p class="blink-none" id="blink-box">Listening</p>
+        <span class="record-none" id="record"><span>
+      </div>
       </div>
       <div class="breaking-news">
         <div class="bn-title"><span></span></div>

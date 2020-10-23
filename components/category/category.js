@@ -344,7 +344,7 @@ let windowActive = false;
             //  setTimeout(() => {
             //     artyom.simulateInstruction("cancella quinto prodotto");
             //  }, 4000);
-            artyom.simulateInstruction("torna al menù");
+            // artyom.simulateInstruction("torna al menù");
         
 
             console.log(artyom.getAvailableCommands());
