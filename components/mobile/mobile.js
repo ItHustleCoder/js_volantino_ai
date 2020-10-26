@@ -13,7 +13,10 @@ var shop = document.getElementById('shop_cat');
 var team = document.getElementById('team_cat');
 var profile = document.getElementById('prof_cat');
 var stat = document.getElementById('stat_cat');
-
+var prod1 = document.getElementById('prod1');
+    prod2 = document.getElementById('prod2');
+    prod3 = document.getElementById('prod3');
+    prod4 = document.getElementById('prod4');
 
 
 /* Start Recognition */
@@ -29,11 +32,17 @@ var _shopCat = ["prodotti","vai su prodotti", "vai nella sezione prodotti", "vol
 var _teamCat = ["squadra", "vai squadra", "vai sulla sezione squadar", "squadra", "la nostra squarda","squadra volantino", "volantino team"];
 var _profCat = ["profilo", "vai su profillo", "vai su profilo","profillo"];
 var _statCat = ["statistica", "volantino statistica", "la statistica", "statistica volantino","statistica di volantino"];
-var _selectFirsItems = ["seleziona prodotto numero uno", "seleziona prodotto numero 1","seleziona prodotto uno", "seleziona primo prodotto", "seleziona prima prodotto"];
-var _selectSecondItems = ["seleziona prodotto numero due", "seleziona prodotto numero 2","seleziona prodotto due", "seleziona secondo prodotto", "seleziona seconda prodotto"];
-var _selectThirdItems = ["seleziona prodotto numero tre", "seleziona prodotto numero 3","seleziona prodotto tre", "seleziona terzo prodotto", "seleziona terza prodotto"];
-var _selectFourItems = ["seleziona prodotto numero quatro", "seleziona prodotto numero 4","seleziona prodotto quatro", "seleziona quarto prodotto", "seleziona quarto prodotto"];
+var _selectFirsItems = ["seleziona prodotto numero uno", "seleziona prodotto numero 1","seleziona prodotto uno", "seleziona primo prodotto", "seleziona prima prodotto", "seleziona nike air zero"];
+var _selectSecondItems = ["seleziona prodotto numero due", "seleziona prodotto numero 2","seleziona prodotto due", "seleziona secondo prodotto", "seleziona seconda prodotto", "seleziona nike xan"];
+var _selectThirdItems = ["seleziona prodotto numero tre", "seleziona prodotto numero 3","seleziona prodotto tre", "seleziona terzo prodotto", "seleziona terza prodotto", "seleziona nike green fast"];
+var _selectFourItems = ["seleziona prodotto numero quatro", "seleziona prodotto numero 4","seleziona prodotto quatro", "seleziona quarto prodotto", "seleziona quarto prodotto", "seleziona nike yellow by"];
+var _unselectFirstItems = ["cancella primo prodotto", "cancella prodotto numero uno", "cancella prima podotto", "cancella il primo podotto", "cancella nike air zero"];
+var _unselectSecondItems = ["cancella secondo prodotto", "cancella prodotto numero due", "cancella secondo podotto", "cancella il secondo podotto", "cancella nike xan" ];
+var _unselectThirdItems = ["cancella terzo prodotto", "cancella prodotto numero tre", "cancella terzo podotto", "cancella il terzo podotto","cancella nike green fast" ];
+var _unselectFourItems = ["cancella qarto prodotto", "cancella prodotto numero quatro", "cancella quarto podotto", "cancella il quarto podotto","cancella nike yellow by"];
+
 var _listaCommande = ["apri lista dei commandi", "volantino fammi vedere le comande", "volantino info"];
+
 
 
 recognition.onresult = function (event) {
@@ -47,7 +56,7 @@ recognition.onresult = function (event) {
       redOutLoad(transcript);
       console.log(transcript);
     }
-  
+
     function redOutLoad(message) {
       var speech = new SpeechSynthesisUtterance();
       var greetings = [
@@ -58,10 +67,10 @@ recognition.onresult = function (event) {
       ];
       var activWords = ['Benvenuto Rossano'];
       var comandList = ['Al momento so fare : scendere giu. salire su. chiudere poppup. trovare le ricette. aprire le finestre con nome volantino. conquistare il mondo. e un scherzo. per il momento non so fare.'];
-      
-  
-  
-  
+
+
+
+
       speech.lang = "it";
       speech.volume = 0.8;
       speech.pitch = 0.9;
@@ -75,52 +84,52 @@ recognition.onresult = function (event) {
       } else if (message.includes("volantino start")) {
         speech.text = activWords;
       }
-  
+
       window.speechSynthesis.speak(speech);
-           
+
       if (transcript.toLowerCase().trim().includes("volantino cosa sai fare")) {
         speech.text = comandList;
         window.speechSynthesis.speak(speech);
-  
+
       }
 
-    for(let value of _shopCat) { 
+    for(let value of _shopCat) {
       if (transcript.toLowerCase().trim().includes(value)) {
         scrollContent(shop);
         console.log('Scroll into shop');
       }
     }
-  
+
       for (let value of _teamCat) {
         if (transcript.toLowerCase().trim().includes(value)) {
             scrollContent(team);
             console.log('Scroll into team');
         }
       }
-      
+
     for(let value of _statCat) {
       if (transcript.toLowerCase().trim().includes(value)) {
             scrollContent(stat);
         }
-    } 
-    
-    for(let value of _profCat) { 
+    }
+
+    for(let value of _profCat) {
       if (transcript.toLowerCase().trim().includes(value)) {
             scrollContent(profile);
             console.log('Scroll profillo');
         }
     }
-   
+
 
       for(let value of _scrollTop) {
       if (transcript.toLowerCase().trim().includes(value)) {
         scrollTop();
         console.log("Page Up");
       }
-    
+
     }
 
-    for(let value of _scrollDown) { 
+    for(let value of _scrollDown) {
       if (transcript.toLowerCase().trim().includes(value)) {
         scrollDown();
         console.log("Page Down");
@@ -128,7 +137,7 @@ recognition.onresult = function (event) {
 
     }
 
-    for(let value of _listaCommande) { 
+    for(let value of _listaCommande) {
       if (transcript.toLowerCase().trim().includes(value)) {
         scrollTop();
         console.log('apro info');
@@ -136,8 +145,90 @@ recognition.onresult = function (event) {
       }
     }
 
+    /* Checkbox */
+    for(let value of _selectFirsItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod1);
+            recognition.addEventListener('end', () => {
+                prod1.checked = true;
+            },1000);
+        }
+    }
 
-  
+    for(let value of _selectSecondItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod2);
+            recognition.addEventListener('end', () => {
+                prod2.checked = true;
+            },1000);
+        }
+    }
+
+
+    for(let value of _selectThirdItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod3);
+            recognition.addEventListener('end', () => {
+                prod3.checked = true;
+            },1000);
+        }
+    }
+
+    for(let value of _selectFourItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod4);
+            recognition.addEventListener('end', () => {
+                prod4.checked = true;
+            },1000);
+        }
+    }
+
+    for(let value of _unselectFirstItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod1);
+            recognition.addEventListener('end', () => {
+                prod1.checked = false;
+            },1000);
+        }
+    }
+
+    
+    for(let value of _unselectSecondItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod2);
+            recognition.addEventListener('end', () => {
+                prod2.checked = false;
+            },1000);
+        }
+    }
+
+    
+    for(let value of _unselectThirdItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod3);
+            recognition.addEventListener('end', () => {
+                prod3.checked = false;
+            },1000);
+        }
+    }
+
+    
+    for(let value of _unselectFourItems) {
+        if(transcript.toLowerCase().trim().includes(value)) {
+            scrollContent(prod4);
+            recognition.addEventListener('end', () => {
+                prod4.checked = false;
+            },1000);
+        }
+    }
+
+
+
+
+
+
+
+
       function hideModalWindow(e, b) {
         for (let value of modalHide) {
           if (transcript.toLowerCase().trim().includes(value)) {
@@ -148,9 +239,9 @@ recognition.onresult = function (event) {
         }
       }
     }
-  
+
   };
-  
+
   function scrollDown() {
     // window.scrollTo(0, 5000);
     down.scrollIntoView({
@@ -159,7 +250,7 @@ recognition.onresult = function (event) {
       behavior: "smooth"
     });
   }
-  
+
   function scrollTop() {
     up.scrollIntoView({
       block: "start",
@@ -167,7 +258,7 @@ recognition.onresult = function (event) {
       behavior: "smooth"
     });
   }
-  
+
   function scrollContent(name) {
     name.scrollIntoView({
       block: "start",
@@ -175,21 +266,21 @@ recognition.onresult = function (event) {
       behavior: "smooth",
     });
   }
-  
+
   //Function Manualy Click button
-  
- 
+
+
 
 /* Cath error */
   recognition.addEventListener('nomatch', () => {
     console.log('No ho capito');
   });
-  
+
   /* Diable Button after end recognition */
   recognition.addEventListener('end', () => {
         buttonOff();
   });
-  
+
   btn.addEventListener("click", () => {
       console.log('click');
     if (btn.classList.contains("assi_btn")) {
@@ -197,7 +288,7 @@ recognition.onresult = function (event) {
       btn.classList.add("btn-reload");
     //   recognition.addEventListener("end", recognition.start);
       recognition.start();
-  
+
 
     } else {
       if (btn.classList.contains("btn-reload")) {
