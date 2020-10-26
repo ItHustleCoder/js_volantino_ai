@@ -4,7 +4,7 @@ var SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
 if(SpeechRecognition) {
-
+console.log("Your browser or mobile device supported");
 //Get all elements
 var btn = document.getElementById('btn_assi');
 var up = document.getElementById('page_up');
