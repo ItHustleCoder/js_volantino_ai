@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="CSS Tabs" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.css">
+<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<title>info</title>
+<meta charset=utf-8>
+</head>
+<body>
+<style>
+        @import "compass/css3";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url(https://subtlepatterns.com/patterns/use_your_illusion.png);
+  color: #eee;
+  font: 1em 'PT Sans', sans-serif;
+}
+
+::selection {
+  background-color: #4EC6DE;
+}
+
+.tabbed {
+  width: 700px;
+  margin: 50px auto;
+}
+
+.tabbed > input {
+  display: none;
+}
+
+.tabbed > label {
+  display: block;
+  float: left;
+  padding: 12px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.tabbed > label:hover,
+.tabbed > input:checked + label {
+  background: #4EC6DE;
+}
+
+.tabs {
+  clear: both;
+  perspective: 600px;
+}
+
+.tabs > div {
+  width: 700px;
+  position: absolute;
+  border: 2px solid #4EC6DE;
+  padding: 10px 30px 40px;
+  line-height: 1.4em;
+  opacity: 0;
+  transform: rotateX(-20deg);
+  transform-origin: top center;
+  transition: opacity .3s, transform 1s;
+  z-index: 0;
+}
+
+#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
+#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
+#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
+#tab-nav-4:checked ~ .tabs > div:nth-of-type(4){
+  transform: rotateX(0);
+  opacity: 1;
+  z-index: 1;
+}
+
+@media screen and (max-width: 700px) {
+  .tabbed { width: 400px }
+  .tabbed > label { display: none }
+  .tabs > div {
+    width: 400px;
+    border: none;
+    padding: 0;
+    opacity: 1;
+    position: relative;
+    transform: none;
+    margin-bottom: 60px;
+  }
+  .tabs > div h2 {
+    border-bottom: 2px solid #4EC6DE;
+    padding-bottom: .5em;
+  }
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+</style>
+  <div class="tabbed">
+    <input type="radio" name="tabs" id="tab-nav-1" checked>
+    <label for="tab-nav-1">Scroll commands</label>
+    <input type="radio" name="tabs" id="tab-nav-2">
+    <label for="tab-nav-2">Action commands</label>
+    <input type="radio" name="tabs" id="tab-nav-3">
+    <label for="tab-nav-3">Navigation commands</label>
+    <input type="radio" name="tabs" id="tab-nav-4">
+    <label for="tab-nav-4">Exit commands</label>
+    <div class="tabs">
+      <div>
+          <h2>Scroll</h2>
+        <ul>
+            <li>vai su, vai all'inizio, sali sopra,su volantino su</li>
+            <li>vai giù, giù, volantino vai giù, scendi, scendi giù</li>
+            <li>prodotti, vai su prodotti, vai nella sezione prodotti, volantino prodotti, trova prodotti(o)</li>
+            <li>suqadra, vai suqadra, vai sulla sezione squadra, la nostra squadra, squadra volantino, volantino team</li>
+            <li>profillo, vai su profillo</li>
+            <li>statistica, volantino statistica, statistica volantino</li>
+        </ul>
+    </div>
+      <div>
+        <h2>Azioni</h2>
+        <ul>
+          <li>Hello</li>
+          <li>Hello</li>
+          <li>Hello</li>
+          <li>Hello</li>
+          <li>Hello</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Navigazione</h2>
+        <ul>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+        </ul>
+      </div>
+      <div>
+        <h2>
+          <a href="./mobile.php">Click per toranre</a>
+        </h2>
+          <ul>
+            <li>aa1</li>
+            <li>aa1</li>
+            <li>aa1</li>
+            <li>aa1</li>
+            <li>aa1</li>
+            <li>aa1</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.6/prefixfree.min.js"></script>
+</body>
+</html>

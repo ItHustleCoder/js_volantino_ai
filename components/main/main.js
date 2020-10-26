@@ -189,6 +189,22 @@ let windowActive = false;
             }     
        },
 
+
+       //Area mobile
+       {
+           indexes: ["vai su area mobile"],
+           action: () => {
+               artyom.say("ok andiamo", {
+                onEnd: () => {
+                    setTimeout(() => {
+                        location.href = "../mobile/mobile.php";
+                    },1000);
+                }
+               });
+           }
+       },
+
+
        {
            indexes: ["chiudi *"],
            action: (e) => {
@@ -462,7 +478,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            // artyom.simulateInstruction("volantino vai alla sezione prodotti");
+            artyom.simulateInstruction("vai su area mobile");
                        
             console.log(artyom.getAvailableCommands());
 
@@ -529,9 +545,11 @@ let windowActive = false;
        if(!artyom.Device.isMobile){
                console.log("Artyom can talk and obey commands in this browser, however the voice will be the default voice of the device. Cannot force language here.");
            }else{
-               
+               console.log('test first else...')
            }
        }else{
-           alert("Artyom only works with The Google Chrome Browser!");
+           setTimeout(() => {
+            location.href = "../redirect.html";
+           },1000)
        }
    };
