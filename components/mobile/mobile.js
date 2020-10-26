@@ -33,6 +33,7 @@ var _selectFirsItems = ["seleziona prodotto numero uno", "seleziona prodotto num
 var _selectSecondItems = ["seleziona prodotto numero due", "seleziona prodotto numero 2","seleziona prodotto due", "seleziona secondo prodotto", "seleziona seconda prodotto"];
 var _selectThirdItems = ["seleziona prodotto numero tre", "seleziona prodotto numero 3","seleziona prodotto tre", "seleziona terzo prodotto", "seleziona terza prodotto"];
 var _selectFourItems = ["seleziona prodotto numero quatro", "seleziona prodotto numero 4","seleziona prodotto quatro", "seleziona quarto prodotto", "seleziona quarto prodotto"];
+var _listaCommande = ["apri lista dei commandi", "volantino fammi vedere le comande", "volantino info"];
 
 
 recognition.onresult = function (event) {
@@ -63,8 +64,8 @@ recognition.onresult = function (event) {
   
       speech.lang = "it";
       speech.volume = 0.8;
-      speech.pitch = 0.5;
-      speech.rate = 0.6;
+      speech.pitch = 0.9;
+      speech.rate = 0.9;
       if (message.includes("volantino Come stai")) {
         var count = Math.floor(Math.random() * greetings.length);
         console.log(count);
@@ -83,7 +84,7 @@ recognition.onresult = function (event) {
   
       }
 
-      for(let value of _shopCat) { 
+    for(let value of _shopCat) { 
       if (transcript.toLowerCase().trim().includes(value)) {
         scrollContent(shop);
         console.log('Scroll into shop');
@@ -109,13 +110,7 @@ recognition.onresult = function (event) {
             console.log('Scroll profillo');
         }
     }
-      if (transcript.toLowerCase().trim().includes("volantino condividi")) {
-      }
-  
-      for (let value of wordsIndice) {
-        if (transcript.toLowerCase().trim().includes(value)) {
-        }
-      }
+   
 
       for(let value of _scrollTop) {
       if (transcript.toLowerCase().trim().includes(value)) {
@@ -132,15 +127,16 @@ recognition.onresult = function (event) {
       }
 
     }
-      if (transcript.toLowerCase().trim().includes("trova ricetta del giorno")) {
+
+    for(let value of _listaCommande) { 
+      if (transcript.toLowerCase().trim().includes(value)) {
+        scrollTop();
+        console.log('apro info');
+        audioEnd("./command.html");
       }
-      for (let value of wordsRecept) {
-        if (transcript.toLowerCase().trim().includes(value)) {
-          scrollRecept(findRecept2);
-          findRecept2.style.display = "block";
-          console.log("Page Recept2");
-        }
-      }
+    }
+
+
   
       function hideModalWindow(e, b) {
         for (let value of modalHide) {
@@ -174,8 +170,8 @@ recognition.onresult = function (event) {
   
   function scrollContent(name) {
     name.scrollIntoView({
-      block: "center",
-      inline: "center",
+      block: "start",
+      inline: "start",
       behavior: "smooth",
     });
   }
@@ -217,6 +213,16 @@ recognition.onresult = function (event) {
   function buttonOff() {
     btn.classList.remove("btn-reload");
     btn.classList.add("assi_btn");
+  }
+
+
+  function audioEnd(link) {
+    recognition.addEventListener('end', () => {
+      console.log('Finito questo');
+      setTimeout(() => {
+        location.href = link;
+      },2000);
+    });
   }
 
 } else {

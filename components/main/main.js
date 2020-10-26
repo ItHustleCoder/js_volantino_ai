@@ -478,7 +478,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            artyom.simulateInstruction("vai su area mobile");
+            // artyom.simulateInstruction("volantino vai alla sezione prodotti");
                        
             console.log(artyom.getAvailableCommands());
 
