@@ -478,7 +478,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            // artyom.simulateInstruction("volantino vai alla sezione prodotti");
+            artyom.simulateInstruction("volantino vai alla sezione prodotti");
                        
             console.log(artyom.getAvailableCommands());
 
@@ -549,7 +549,7 @@ let windowActive = false;
            }
        }else{
            setTimeout(() => {
-            location.href = "../redirect.html";
+            location.href = "../redirect/redirect.html";
            },1000)
        }
    };

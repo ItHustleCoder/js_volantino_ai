@@ -17,7 +17,7 @@ var prod1 = document.getElementById('prod1');
     prod2 = document.getElementById('prod2');
     prod3 = document.getElementById('prod3');
     prod4 = document.getElementById('prod4');
-
+var notFocus = document.querySelector('.focus-none');
 
 /* Start Recognition */
 var recognition = new SpeechRecognition();
@@ -152,6 +152,7 @@ recognition.onresult = function (event) {
           document.querySelector('#prod1').checked = true;
            scrollContent(prod1);
             recognition.addEventListener('end', () => {
+                
                 prod1.checked = true;
             },1000);
         }

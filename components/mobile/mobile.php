@@ -58,7 +58,7 @@ $_SESSION['testing'] = time();
                 <input style="margin-left: 5px;" type="checkbox" id="prod1">
                     <div class="card-body p-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556485076/shoes-1_gthops.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
                         <h5> <a href="#" class="text-dark">Nike AirZero</a></h5>
-                        <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="small text-muted font-italic">Il prodotto numero 1</p>
                         <ul class="list-inline small">
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -70,13 +70,13 @@ $_SESSION['testing'] = time();
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 focus-none">
                 <!-- Card-->
                 <div class="card rounded shadow-sm border-0">
                 <input style="margin-left: 5px;" type="checkbox" id="prod2">
                     <div class="card-body p-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556485077/shoes-3_rk25rt.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
                         <h5> <a href="#" class="text-dark">Nike XAN</a></h5>
-                        <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="small text-muted font-italic">Il prodotto numero 2</p>
                         <ul class="list-inline small">
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -94,7 +94,7 @@ $_SESSION['testing'] = time();
                 <input style="margin-left: 5px;" type="checkbox" id="prod3"> 
                 <div class="card-body p-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556485078/shoes-2_g4qame.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
                         <h5> <a href="#" class="text-dark">Nike Green-Fast</a></h5>
-                        <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="small text-muted font-italic">Il prodotto numero 3</p>
                         <ul class="list-inline small">
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -111,7 +111,7 @@ $_SESSION['testing'] = time();
                 <input style="margin-left: 5px;" type="checkbox" id="prod4">                    
                     <div class="card-body p-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556485078/shoes-4_vgfjy9.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
                         <h5> <a href="#" class="text-dark">Nike Yellow-BY</a></h5>
-                        <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="small text-muted font-italic">Il prodotto numero 4</p>
                         <ul class="list-inline small">
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                             <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -124,6 +124,7 @@ $_SESSION['testing'] = time();
             </div>
         </div>
             <!-- TODO: -->
+            
             <button id="btn_assi" class="assi_btn"><img src="./img/vpiu_logo_small.png" alt="Start"></button>
 
         <!-- Second Row [Team]-->

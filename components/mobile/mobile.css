@@ -78,4 +78,8 @@ body {
   button:focus {
   outline: none !important;
   }
+
+  .focus-style {
+      color: rgba(178, 255, 62, 0.822);
+  }
   
