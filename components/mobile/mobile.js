@@ -32,14 +32,15 @@ var _shopCat = ["prodotti","vai su prodotti", "vai nella sezione prodotti", "vol
 var _teamCat = ["squadra", "vai squadra", "vai sulla sezione squadar", "squadra", "la nostra squarda","squadra volantino", "volantino team"];
 var _profCat = ["profilo", "vai su profillo", "vai su profilo","profillo"];
 var _statCat = ["statistica", "volantino statistica", "la statistica", "statistica volantino","statistica di volantino"];
-var _selectFirsItems = ["seleziona prodotto numero uno", "seleziona prodotto numero 1","seleziona prodotto uno", "seleziona primo prodotto", "seleziona prima prodotto", "seleziona nike air zero"];
-var _selectSecondItems = ["seleziona prodotto numero due", "seleziona prodotto numero 2","seleziona prodotto due", "seleziona secondo prodotto", "seleziona seconda prodotto", "seleziona nike xan"];
-var _selectThirdItems = ["seleziona prodotto numero tre", "seleziona prodotto numero 3","seleziona prodotto tre", "seleziona terzo prodotto", "seleziona terza prodotto", "seleziona nike green fast"];
-var _selectFourItems = ["seleziona prodotto numero quatro", "seleziona prodotto numero 4","seleziona prodotto quatro", "seleziona quarto prodotto", "seleziona quarto prodotto", "seleziona nike yellow by"];
-var _unselectFirstItems = ["cancella primo prodotto", "cancella prodotto numero uno", "cancella prima podotto", "cancella il primo podotto", "cancella nike air zero"];
-var _unselectSecondItems = ["cancella secondo prodotto", "cancella prodotto numero due", "cancella secondo podotto", "cancella il secondo podotto", "cancella nike xan" ];
-var _unselectThirdItems = ["cancella terzo prodotto", "cancella prodotto numero tre", "cancella terzo podotto", "cancella il terzo podotto","cancella nike green fast" ];
-var _unselectFourItems = ["cancella qarto prodotto", "cancella prodotto numero quatro", "cancella quarto podotto", "cancella il quarto podotto","cancella nike yellow by"];
+var _selectFirsItems = ["seleziona prodotto numero uno", "seleziona il prodotto numero 1","seleziona prodotto uno", "seleziona primo prodotto", "seleziona il primo prodotto", "seleziona nike air zero", "seleziona prodotto due"];
+var _selectSecondItems = ["seleziona il prodotto numero due", "seleziona il prodotto numero 2","seleziona prodotto due", "seleziona il secondo prodotto", "seleziona seconda prodotto", "seleziona nike xan", "seleziona prodotto due"];
+var _selectThirdItems = ["seleziona il prodotto numero tre", "seleziona il prodotto numero 3","seleziona prodotto tre", "seleziona il terzo prodotto", "seleziona terza prodotto", "seleziona nike green fast"];
+var _selectFourItems = ["seleziona il prodotto numero quatro", "seleziona il prodotto numero 4","seleziona il prodotto quatro", "seleziona il quarto prodotto", "seleziona quarto prodotto", "seleziona nike yellow by", "seleziona prodotto quatro", "seleziona prodotto 4", "selezione prodotto 4"];
+var _unselectFirstItems = ["cancella il primo prodotto", "cancella il prodotto numero uno", "cancella prima podotto", "cancella il primo podotto", "cancella nike air zero", "cancella il prodotto numero 1","cancella primo prodotto"];
+var _unselectSecondItems = ["cancella il secondo prodotto", "cancella il prodotto numero due", "cancella secondo podotto", "cancella il secondo podotto", "cancella nike xan",
+"cancella il prodotto numero 2" ];
+var _unselectThirdItems = ["cancella il terzo prodotto", "cancella il prodotto numero tre", "cancella terzo podotto", "cancella il terzo podotto","cancella nike green fast", "cancella il prodotto numero 3" ];
+var _unselectFourItems = ["cancella il qarto prodotto", "cancella il prodotto numero quatro", "cancella quarto podotto", "cancella il quarto podotto", "cancella il prodotto numero 4","cancella nike yellow by"];
 
 var _listaCommande = ["apri lista dei commandi", "volantino fammi vedere le comande", "volantino info"];
 
@@ -146,9 +147,10 @@ recognition.onresult = function (event) {
     }
 
     /* Checkbox */
-    for(let value of _selectFirsItems) {
+    for(let value of _selectFirsItems) { 
         if(transcript.toLowerCase().trim().includes(value)) {
-            scrollContent(prod1);
+          document.querySelector('#prod1').checked = true;
+           scrollContent(prod1);
             recognition.addEventListener('end', () => {
                 prod1.checked = true;
             },1000);
@@ -157,6 +159,7 @@ recognition.onresult = function (event) {
 
     for(let value of _selectSecondItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+            document.querySelector('#prod2');
             scrollContent(prod2);
             recognition.addEventListener('end', () => {
                 prod2.checked = true;
@@ -167,15 +170,17 @@ recognition.onresult = function (event) {
 
     for(let value of _selectThirdItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
-            scrollContent(prod3);
-            recognition.addEventListener('end', () => {
-                prod3.checked = true;
-            },1000);
+            document.querySelector('#prod3');
+              scrollContent(prod3);
+              recognition.addEventListener('end', () => {
+                  prod3.checked = true;
+              },1000);
         }
     }
 
     for(let value of _selectFourItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+          document.querySelector('#prod4');
             scrollContent(prod4);
             recognition.addEventListener('end', () => {
                 prod4.checked = true;
@@ -185,6 +190,7 @@ recognition.onresult = function (event) {
 
     for(let value of _unselectFirstItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+          document.querySelector('#prod1');
             scrollContent(prod1);
             recognition.addEventListener('end', () => {
                 prod1.checked = false;
@@ -195,6 +201,7 @@ recognition.onresult = function (event) {
     
     for(let value of _unselectSecondItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+          document.querySelector('#prod2');  
             scrollContent(prod2);
             recognition.addEventListener('end', () => {
                 prod2.checked = false;
@@ -205,6 +212,7 @@ recognition.onresult = function (event) {
     
     for(let value of _unselectThirdItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+          document.querySelector('#prod3');
             scrollContent(prod3);
             recognition.addEventListener('end', () => {
                 prod3.checked = false;
@@ -215,6 +223,7 @@ recognition.onresult = function (event) {
     
     for(let value of _unselectFourItems) {
         if(transcript.toLowerCase().trim().includes(value)) {
+          document.querySelector('#prod4');  
             scrollContent(prod4);
             recognition.addEventListener('end', () => {
                 prod4.checked = false;
