@@ -15,9 +15,9 @@ const _youreName = ["come ti chiami", "come si chiama" ,"come ti chiami", "come 
 const _action = ["torna indietro", "fai vedere prodotti", "fammi vedere prodotti","torna al menù precedente", "torna al menù precedente", "esci di qua"];
 
 /* Answers */
-const _aswFrase = ["ciao come sta?", "buongiorno come va?", "buonasera come sta?", "salve come stai?"];
-const _aswStep = ["tutto bene, grazie", "va tutto bene grazie", "Buonasera tutto bene", "salve sto bennissimo"];
-const _aswName = ["Mi chiamo Volantino", "Volantino", "Volantino"];
+const _aswFrase = ["Ciao come sta?", "Buongiorno come va?", "Buonasera come sta?", "Salve come stai?"];
+const _aswStep = ["Tutto bene, grazie", "Va tutto bene grazie", "Buonasera tutto bene", "Salve sto bennissimo"];
+const _aswName = ["Mi chiamo Volantino", "Volantino"];
 
 let p = document.createElement("p");
 
@@ -34,20 +34,20 @@ recognition.addEventListener("result", (e) => {
         if (text.toLowerCase().trim().includes(value)) {
         p = document.createElement("p");
         p.classList.add("replay");
-            for(let value of _aswFrase) { 
-                p.innerText = value;
+            const finalText = _aswFrase[Math.floor(Math.random() * _aswFrase.length)];
+                p.innerText = finalText;
                 texts.appendChild(p);
-            }
+            
         }
     }
 for(let value of _youreName) { 
     if (text.toLowerCase().trim().includes(value)) {
       p = document.createElement("p");
       p.classList.add("replay");
-        for(let value of _aswName) {         
-            p.innerText = value;
-            texts.appendChild(p);
-        }    
+        const finalText =  _aswName[Math.floor(Math.random() * _aswName.length)];
+              p.innerText = finalText;
+              texts.appendChild(p);    
+            
     }
 }
 
