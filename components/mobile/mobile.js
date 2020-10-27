@@ -18,6 +18,8 @@ var prod1 = document.getElementById('prod1');
     prod3 = document.getElementById('prod3');
     prod4 = document.getElementById('prod4');
 var notFocus = document.querySelector('.focus-none');
+/* TODO: */
+var showTranscript = document.getElementById('transcript');
 
 /* Start Recognition */
 var recognition = new SpeechRecognition();
@@ -25,6 +27,7 @@ var recognition = new SpeechRecognition();
 recognition.lang = "it-IT";
 recognition.interimResults = false;
 
+var Content = '';
 /* Dictionary commands */
 var _scrollTop = ["vai su" ,"vai all'inizio", "sali sopra","su","volantino su"];
 var _scrollDown = ["vai giù", "va giù", "volantino giù", "volantino vai giù", "giù", "scendi", "scendi giù"];
@@ -56,6 +59,8 @@ recognition.onresult = function (event) {
       }
       redOutLoad(transcript);
       console.log(transcript);
+       Content += transcript;
+       showTranscript.innerHTML = Content;
     }
 
     function redOutLoad(message) {
@@ -164,6 +169,11 @@ recognition.onresult = function (event) {
             scrollContent(prod2);
             recognition.addEventListener('end', () => {
                 prod2.checked = true;
+                /* TODO: */
+                if(notFocus.classList.contains('focus-none')){
+                  notFocus.classList.remove('focus-none');
+                  notFocus.classList.add('focus-style');
+                }
             },1000);
         }
     }

@@ -124,7 +124,7 @@ $_SESSION['testing'] = time();
             </div>
         </div>
             <!-- TODO: -->
-            
+            <span id="transcript"></span>
             <button id="btn_assi" class="assi_btn"><img src="./img/vpiu_logo_small.png" alt="Start"></button>
 
         <!-- Second Row [Team]-->

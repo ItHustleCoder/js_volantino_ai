@@ -475,7 +475,7 @@ let windowActive = false;
 
             
             //Sicmundus
-            artyom.simulateInstruction("volantino dimmi una barzelletta");
+            // artyom.simulateInstruction("volantino dimmi una barzelletta");
                        
             console.log(artyom.getAvailableCommands());
 

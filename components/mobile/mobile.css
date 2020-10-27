@@ -55,7 +55,7 @@ body {
     font-size: 20px;
     border-radius: 50%;
     position: fixed;
-    top: 83%;
+    top: 86%;
     left: 80%;
     z-index: 1;
     outline: none;
@@ -83,3 +83,11 @@ body {
       color: rgba(178, 255, 62, 0.822);
   }
   
+
+  #transcript {
+      z-index: 1;
+      position: fixed;
+      top: 82%;
+      left: 82%;
+      color: red;
+  }

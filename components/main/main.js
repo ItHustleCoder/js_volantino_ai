@@ -1,12 +1,12 @@
+       window.addEventListener("DOMContentLoaded", () => {
+
+       console.log('DOM is loaded');
+       
        //Get all DOM elements
        const btn = document.getElementById('btn');
        const wave = document.getElementById('wave-btn_waves');
        const textButton = document.getElementById('textB');
-       const modal = document.getElementById('myModal')
        const span = document.getElementById('output');
-       const commandAction = document.getElementById('command-left');
-       const commandInfo = document.getElementById('command-rigth');
-       const showCard = document.getElementById('show-card');
        const audio = document.getElementById('audioMusic');
        const blinkText = document.getElementById('blink-box');
        const spanRecord = document.getElementById('record');
@@ -55,8 +55,6 @@
 
  //Call class item and bind name
 const artyom = new Artyom();
-
-let windowActive = false;
 
  window.onload = function(){
      if(artyom.Device.isChrome){
@@ -201,15 +199,6 @@ let windowActive = false;
                     },1000);
                 }
                });
-           }
-       },
-
-
-       {
-           indexes: ["chiudi *"],
-           action: (e) => {
-               artyom.say("Sarà immediatamente chiuso");
-               
            }
        },
 
@@ -363,40 +352,6 @@ let windowActive = false;
                 
         }
     });
-
-
-
-    //Promp test {NB this method disable all comadns befoure this will be executed }
-
-    // artyom.newPrompt({
-    //     question:"No ho prodotti selezionato voui guardare altri?",
-    //     //We set the smart property to true to accept wildcards
-    //     smart:true,
-    //     options:["Si","trova * "],
-    //     beforePrompt: () => {
-    //         console.log("Before ask");
-    //     },
-    //     onStartPrompt:  () => {
-    //         console.log("The prompt is being executed");
-    //     },
-    //     onEndPrompt: () => {
-    //         console.log("The prompt has been executed succesfully");
-    //     },
-    //     onMatch: (i,wildcard) => {// i returns the index of the given options
-    //         let action;
-    
-    //         let totalCentimeters = parseInt(wildcard);
-    //         if(i === 1){
-    //         action = () => {
-    //             alert(wildcard + " ecco");
-    //         }
-    //     };
-    
-    //         // A function needs to be returned in onMatch event
-    //         // in order to accomplish what you want to execute
-    //         return action;                       
-    //     }
-    // });
            
 
     //Here start Recognition :        
@@ -553,3 +508,5 @@ let windowActive = false;
            },1000)
        }
    };
+
+});
