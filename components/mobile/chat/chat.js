@@ -29,6 +29,7 @@ recognition.addEventListener("result", (e) => {
     .join("");
 
   p.innerText = text;
+  
   if (e.results[0].isFinal) {
     for(let value of _firsFrase) {
         if (text.toLowerCase().trim().includes(value)) {

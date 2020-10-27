@@ -259,7 +259,7 @@ recognition.onresult = function (event) {
         scrollTop();
         setTimeout(() => {
           console.log("Apro chat");
-          location.href ="./chat/chat.html";
+          location.href ="./chat/chat.php";
         },2000);
       }
     }
