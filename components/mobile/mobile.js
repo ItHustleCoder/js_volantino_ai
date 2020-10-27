@@ -47,21 +47,36 @@ var _unselectFourItems = ["cancella il qarto prodotto", "cancella il prodotto nu
 
 var _listaCommande = ["apri lista dei commandi", "volantino fammi vedere le comande", "volantino info"];
 
+let p = document.createElement('p');
 
 
 recognition.onresult = function (event) {
-    var transcript = "";
-    for (var i = event.resultIndex; i < event.results.length; i++) {
-      if (event.results[i].isFinal) {
-        transcript = event.results[i][0].transcript;
-      } else {
-        transcript += event.results[i][0].transcript;
-      }
-      redOutLoad(transcript);
-      console.log(transcript);
-       Content += transcript;
-       showTranscript.innerHTML = Content;
-    }
+    console.log(event.result);
+    // TODO: Previos version
+
+    // var transcript = "";
+    // for (var i = event.resultIndex; i < event.results.length; i++) {
+    //   if (event.results[i].isFinal) {
+    //     transcript = event.results[i][0].transcript;
+    //   } else {
+    //     transcript += event.results[i][0].transcript;
+    //   }
+    //   redOutLoad(transcript);
+    //   console.log(transcript);
+       
+    // }
+
+    const transcript = Array.from(event.results)
+    .map(result =>  result[0])
+    .map(result => result.transcript)
+    .join('');
+    
+    p.innerHTML = transcript;
+    showTranscript.appendChild(p);
+
+
+    console.log(transcript);
+    redOutLoad(transcript);
 
     function redOutLoad(message) {
       var speech = new SpeechSynthesisUtterance();
@@ -169,11 +184,6 @@ recognition.onresult = function (event) {
             scrollContent(prod2);
             recognition.addEventListener('end', () => {
                 prod2.checked = true;
-                /* TODO: */
-                if(notFocus.classList.contains('focus-none')){
-                  notFocus.classList.remove('focus-none');
-                  notFocus.classList.add('focus-style');
-                }
             },1000);
         }
     }
@@ -299,6 +309,9 @@ recognition.onresult = function (event) {
   /* Diable Button after end recognition */
   recognition.addEventListener('end', () => {
         buttonOff();
+        setTimeout(() => {
+          showTranscript.innerHTML = '';
+        },2000)
   });
 
   btn.addEventListener("click", () => {
@@ -308,6 +321,7 @@ recognition.onresult = function (event) {
       btn.classList.add("btn-reload");
     //   recognition.addEventListener("end", recognition.start);
       recognition.start();
+      
 
 
     } else {
