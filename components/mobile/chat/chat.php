@@ -41,6 +41,8 @@ $_SESSION['testing'] = time();
           </div>
         </div>
       </section>
+
+      <div id="footer"></div>
       <!-- <script src="./chat.js"></script> -->
 <script>
 const texts = document.querySelector(".texts");
@@ -55,17 +57,19 @@ recognition.lang = 'it-IT';
 var UserName = "<?php echo $_SESSION['name']?>";
     console.log(UserName);
 var _time = new Date();
-var url = "http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7";
+var url = "http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7&lang=it";
 
 /* Fecht Weahter from server */
 /* TODO: */
-// const getDate =  async () => {
-//   const data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
-//   let res = await data.json();
-//     console.log(res.current.condition.text);
-//    return;
-//   }
-//    getDate();
+/* var getDate =  async () => {
+  let data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
+  let res = await data.json();
+    console.log(res.current);
+    
+   
+   return;
+  }
+   getDate(); */
     
    
 //http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples84121&days=7
@@ -80,7 +84,8 @@ const _secondStep = ["come stai", "come va" ,"come la situazione"];
 const _youreName = ["come ti chiami", "come si chiama" ,"come il tuo nome", "come si chiami", "come ti chiamano"];
 const _action = ["torna indietro", "fai vedere prodotti", "fammi vedere prodotti","torna al menù precedente", "torna al menù precedente", "esci di qua"];
 const _whatTime = ["che ora sono", "dimmi che ora", "lo sai che ora sono", "che ora"];
-const _whatIsWeather = ["che tempo oggi", "come il tempo oggi", "che tempo fa oggi"];
+const _whatIsWeather = ["che tempo oggi", "come tempo oggi", "che tempo fa oggi", "previsioni per oggi"];
+const _tommoroWeather = ["previsioni per domani", "che tempo fa domani"];
 
 /* Answers */
 const _aswFrase = [`Ciao ${UserName} come sta?`, `Buongiorno ${UserName} come va?`, `Buonasera ${UserName} come sta?`, `Salve ${UserName} come stai?`];
@@ -89,7 +94,7 @@ const _aswName = ["Mi chiamo Volantino", "Volantino"];
 const _timeIs = [`Ecco : ${_time}`, `Certo sono : ${_time}`];
 
 const up = document.getElementById('up');
-const down = document.getElementById('down');
+const down = document.getElementById('footer');
 let p = document.createElement("p");
 
 recognition.addEventListener("result", (e) => {
@@ -136,27 +141,49 @@ for(let value of _whatTime) {
   }
 }
 
-// const getDate =  async () => {
-//   const data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
-//   let res = await data.json();
-//     console.log(res.current.condition.text);
-//    return res.map(function(respon) {
-//       for(let value of _whatIsWeather) {
-//         if(text.toLowerCase().trim().includes(value)) {
-//         p = document.createElement("p");
-//         p.classList.add("replay");
-//         p.innerText = `Ecco il tempo e :${respon.current.condition.text}`;
-//         texts.appendChild(p);
-//         }
-//       }
-//    });
-// }
-// getDate();
+for(let value of _whatIsWeather) {
 
+if(text.toLowerCase().trim().includes(value)){
 
+  let getDate =  async () => {
+  let data = await fetch(url);
+  let res = await data.json();
+    console.log(res);
 
-// apiGetAll();
-   
+      p = document.createElement("p");
+      p.classList.add("replay");
+      p.innerText = `Al ${res.location.localtime} temeperatura e: ${res.current.temp_c} C° umidita ${res.current.humidity} % e condizioni : ${res.current.condition.text} `;
+      texts.appendChild(p);
+      p = document.createElement("p");
+   return;
+  
+  }
+    getDate();
+  }
+  scrollDown(down);
+}
+
+for(let value of _tommoroWeather) {
+
+if(text.toLowerCase().trim().includes(value)){
+
+  let getDate =  async () => {
+  let data = await fetch(url);
+  let res = await data.json();
+    console.log(res);
+
+      p = document.createElement("p");
+      p.classList.add("replay");
+      p.innerText = `Domani ${res.forecast.forecastday[1].date} la mattina temeperatura e : ${res.forecast.forecastday[1].day.mintemp_c} C° temperatura massima : ${res.forecast.forecastday[1].day.maxtemp_c} C° umidita : ${res.forecast.forecastday[1].day.avghumidity} % condizioni : ${res.forecast.forecastday[1].day.condition.text}`;
+      texts.appendChild(p);
+      p = document.createElement("p");
+   return;
+  
+  }
+  getDate();
+  }
+  scrollDown(down);
+}   
 
 
 

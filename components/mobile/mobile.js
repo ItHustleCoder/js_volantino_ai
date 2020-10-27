@@ -25,7 +25,7 @@ var showTranscript = document.getElementById('transcript');
 var recognition = new SpeechRecognition();
 
 recognition.lang = "it-IT";
-recognition.interimResults = false;
+recognition.interimResults = true;
 
 var Content = '';
 /* Dictionary commands */
