@@ -54,15 +54,33 @@ recognition.lang = 'it-IT';
 
 var UserName = "<?php echo $_SESSION['name']?>";
     console.log(UserName);
-var _time = new Date(); 
+var _time = new Date();
+var url = "http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7";
+
+/* Fecht Weahter from server */
+/* TODO: */
+// const getDate =  async () => {
+//   const data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
+//   let res = await data.json();
+//     console.log(res.current.condition.text);
+//    return;
+//   }
+//    getDate();
+    
+   
+//http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples84121&days=7
+
+
+
 
 /* Libreria per ChatBot */
 /* Questions */
 const _firsFrase = ["ciao" ,"buongiorno", "salve", "buonasera", "ciao come stai","buongiorno come stai", "buonasera come stai", "salve come stai"];
 const _secondStep = ["come stai", "come va" ,"come la situazione"];
-const _youreName = ["come ti chiami", "come si chiama" ,"come ti chiami", "come il tuo nome", "come si chiami", "come ti chiamano", "come ti chiami"];
+const _youreName = ["come ti chiami", "come si chiama" ,"come il tuo nome", "come si chiami", "come ti chiamano"];
 const _action = ["torna indietro", "fai vedere prodotti", "fammi vedere prodotti","torna al menù precedente", "torna al menù precedente", "esci di qua"];
 const _whatTime = ["che ora sono", "dimmi che ora", "lo sai che ora sono", "che ora"];
+const _whatIsWeather = ["che tempo oggi", "come il tempo oggi", "che tempo fa oggi"];
 
 /* Answers */
 const _aswFrase = [`Ciao ${UserName} come sta?`, `Buongiorno ${UserName} come va?`, `Buonasera ${UserName} come sta?`, `Salve ${UserName} come stai?`];
@@ -117,6 +135,32 @@ for(let value of _whatTime) {
               texts.appendChild(p);  
   }
 }
+
+// const getDate =  async () => {
+//   const data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
+//   let res = await data.json();
+//     console.log(res.current.condition.text);
+//    return res.map(function(respon) {
+//       for(let value of _whatIsWeather) {
+//         if(text.toLowerCase().trim().includes(value)) {
+//         p = document.createElement("p");
+//         p.classList.add("replay");
+//         p.innerText = `Ecco il tempo e :${respon.current.condition.text}`;
+//         texts.appendChild(p);
+//         }
+//       }
+//    });
+// }
+// getDate();
+
+
+
+// apiGetAll();
+   
+
+
+
+
 
     for( let value of _action) { 
     if (text.toLowerCase().trim().includes(value)) {
