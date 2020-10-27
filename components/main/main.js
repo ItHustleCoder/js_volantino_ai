@@ -26,18 +26,14 @@
         
         const _jokeArea = [
             "ti amo", "ti voglio bene",
-            "sei simpatica", "sei carina",
-            "sei bella"
-        ];
-
-        const _categoryArea = [
+ 
             "vai su categoria", "apri categoria",
             "vai su categorie", "apri categorie",
             "vai categoria", "apri categorie",
             "vai in categoria", "apri categoria",
             "vai per categorie", "apri le categorie"
 
-        ];
+        ]; */
 
         const _funArea = [
             "dimmi una barzelletta", "fammi ridere",
@@ -142,18 +138,10 @@ const artyom = new Artyom();
 
        },
 
-       //Area Search
-       {
-           indexes: ["trova promozioni dell messe", "trova ricetto del giorno", "trova telecomander"],
-           action: (i) => {
-                artyom.say("Mi dispiace per il momento questa categoria non abilitata, vi prego attendere :");
-                   
-           }
-       },
 
        //Area categorie
 
-       {
+     /*   {
            indexes: _categoryArea,
            action: (i) => {
                    artyom.say("Certo! Andiamo", {
@@ -168,7 +156,7 @@ const artyom = new Artyom();
                
                }
            
-       },
+       }, */
 
        //Area offerte 
 

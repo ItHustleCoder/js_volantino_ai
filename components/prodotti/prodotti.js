@@ -29,14 +29,14 @@
             "sei bella"
         ];
 
-        const _categoryArea = [
+      /*   const _categoryArea = [
             "vai su categoria", "apri categoria",
             "vai su categorie", "apri categorie",
             "vai categoria", "apri categorie",
             "vai in categoria", "apri categoria",
             "vai per categorie", "apri le categorie"
 
-        ];
+        ]; */
 
         const _funArea = [
             "dimmi una barzelletta", "fammi ridere",
@@ -144,17 +144,11 @@ let windowActive = false;
        },
 
        //Area Search
-       {
-           indexes: ["trova promozioni dell messe", "trova ricetto del giorno", "trova telecomander"],
-           action: (i) => {
-                artyom.say("Mi dispiace per il momento questa categoria non abilitata, vi prego attendere :");
-                   
-           }
-       },
+      
 
        //Area categorie
 
-       {
+     /*   {
            indexes: _categoryArea,
            action: (i) => {
                    artyom.say("Certo! Andiamo", {
@@ -169,7 +163,7 @@ let windowActive = false;
                
                }
            
-       },
+       }, */
 
        //Area offerte 
 
