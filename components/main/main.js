@@ -33,7 +33,7 @@
             "vai in categoria", "apri categoria",
             "vai per categorie", "apri le categorie"
 
-        ]; */
+        ];
 
         const _funArea = [
             "dimmi una barzelletta", "fammi ridere",

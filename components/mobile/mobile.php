@@ -31,7 +31,6 @@ $_SESSION['testing'] = time();
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
-    <link rel="manifest" href="./img/site.webmanifest">
     <title>Mobile version</title>
 </head>
 <body>
@@ -125,7 +124,7 @@ $_SESSION['testing'] = time();
         </div>
             <!-- TODO: -->
             <div id="transcript">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum</p>
             </div>
             <button id="btn_assi" class="assi_btn"><img src="./img/vpiu_logo_small.png" alt="Start"></button>
 

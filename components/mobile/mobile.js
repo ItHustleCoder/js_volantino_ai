@@ -45,6 +45,8 @@ var _unselectSecondItems = ["cancella il secondo prodotto", "cancella il prodott
 var _unselectThirdItems = ["cancella il terzo prodotto", "cancella il prodotto numero tre", "cancella terzo podotto", "cancella il terzo podotto","cancella nike green fast", "cancella il prodotto numero 3" ];
 var _unselectFourItems = ["cancella il qarto prodotto", "cancella il prodotto numero quatro", "cancella quarto podotto", "cancella il quarto podotto", "cancella il prodotto numero 4","cancella nike yellow by"];
 
+var _chatBot = ["apri chat", "vai alla sezione chat", "apri chat", "apri bot"];
+
 var _listaCommande = ["apri lista dei commandi", "volantino fammi vedere le comande", "volantino info"];
 
 let p = document.createElement('p');
@@ -250,6 +252,16 @@ recognition.onresult = function (event) {
                 prod4.checked = false;
             },1000);
         }
+    }
+
+    for(let value of _chatBot) {
+      if(transcript.toLowerCase().trim().includes(value)) {
+        scrollTop();
+        setTimeout(() => {
+          console.log("Apro chat");
+          location.href ="./chat/chat.html";
+        },2000);
+      }
     }
 
 

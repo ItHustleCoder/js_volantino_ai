@@ -87,7 +87,10 @@ body {
   #transcript {
       z-index: 1;
       position: fixed;
-      top: 74%;
-      left: 74%;
+      top: 78%;
+      left: 72%;
       color: red;
+      overflow: hidden;
+      height: 68px;
+      width: 100px;
   }
