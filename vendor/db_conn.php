@@ -1,18 +1,18 @@
 <?php
 
 $sname= "localhost";
-// $unmae= "testing3";
-// $password = "AoZm0FkLMQz5QTG";
+$unmae= "testing3";
+$password = "AoZm0FkLMQz5QTG";
 
-// $db_name = "testing3";
+$db_name = "testing3";
 
 
 /* Locale */
 
- $unmae= "root";
-$password = "";
+//  $unmae= "root";
+// $password = "";
 
-$db_name = "test_db"; 
+// $db_name = "test_db"; 
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 

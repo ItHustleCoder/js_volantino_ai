@@ -266,8 +266,7 @@ recognition.onresult = function (event) {
 
 
 
-
-
+  
 
 
 

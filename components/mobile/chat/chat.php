@@ -33,11 +33,11 @@ $_SESSION['testing'] = time();
 </head>
 <body>
     <section>
-        <h1>Volantino<br>ChatBot</h1>
+        <h1 id="up">Volantino<br>ChatBot</h1>
         <p>Available In Chrome😎 Only</p>
         <button class="exit_button"><a href="../mobile.php">Exit</a></button>
         <div class="container">
-          <div class="texts">
+          <div id="down" class="texts">
           </div>
         </div>
       </section>
@@ -70,6 +70,8 @@ const _aswStep = ["Tutto bene, grazie", "Va tutto bene grazie", "Buonasera tutto
 const _aswName = ["Mi chiamo Volantino", "Volantino"];
 const _timeIs = [`Ecco : ${_time}`, `Certo sono : ${_time}`];
 
+const up = document.getElementById('up');
+const down = document.getElementById('down');
 let p = document.createElement("p");
 
 recognition.addEventListener("result", (e) => {
@@ -86,6 +88,7 @@ recognition.addEventListener("result", (e) => {
         if (text.toLowerCase().trim().includes(value)) {
         p = document.createElement("p");
         p.classList.add("replay");
+        scrollDown(down);
             const finalText = _aswFrase[Math.floor(Math.random() * _aswFrase.length)];
                 p.innerText = finalText;
                 texts.appendChild(p);
@@ -96,6 +99,7 @@ for(let value of _youreName) {
     if (text.toLowerCase().trim().includes(value)) {
       p = document.createElement("p");
       p.classList.add("replay");
+      scrollDown(down);
         const finalText =  _aswName[Math.floor(Math.random() * _aswName.length)];
               p.innerText = finalText;
               texts.appendChild(p);    
@@ -107,6 +111,7 @@ for(let value of _whatTime) {
   if(text.toLowerCase().trim().includes(value)) {
     p = document.createElement("p");
       p.classList.add("replay");
+      scrollDown(down);
         const finalText =  _timeIs[Math.floor(Math.random() * _timeIs.length)];
               p.innerText = finalText;
               texts.appendChild(p);  
@@ -127,6 +132,22 @@ for(let value of _whatTime) {
 }
 
 
+function scrollDown() {
+    // window.scrollTo(0, 5000);
+    down.scrollIntoView({
+      block: "end",
+      inline: "end",
+      behavior: "smooth"
+    });
+  }
+
+  function scrollTop() {
+    up.scrollIntoView({
+      block: "start",
+      inline: "start",
+      behavior: "smooth"
+    });
+  }
 
     p = document.createElement("p");
   }
