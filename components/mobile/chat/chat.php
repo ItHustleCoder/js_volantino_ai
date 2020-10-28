@@ -55,44 +55,43 @@ const recognition = new SpeechRecognition();
 recognition.interimResults = true;
 recognition.lang = 'it-IT';
 
+// const now = new Date();
+// const realTime = now.getHours();
+
+
+/* Fetch or Get Session_date */
 var UserName = "<?php echo $_SESSION['name']?>";
     console.log(UserName);
 var _time = new Date();
+var realTime = _time.getHours();
 var url = "http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7&lang=it";
+var API_KEY = "a45a00daef1570bfcc72d4fd86991465";
+var API_ID = "550d9713";
 
-/* Fecht Weahter from server */
-/* TODO: */
-/* var getDate =  async () => {
-  let data = await fetch("http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples&days=7");
-  let res = await data.json();
-    console.log(res.current);
-    
-   
-   return;
-  }
-   getDate(); */
-    
-   
-//http://api.weatherapi.com/v1/forecast.json?key=2d8cac140df5425ca4c152308202710&q=Naples84121&days=7
-
-
-
+/* Test TODO: */
+ 
 
 /* Libreria per ChatBot */
 /* Questions */
-const _firsFrase = ["ciao" ,"buongiorno", "salve", "buonasera", "ciao come stai","buongiorno come stai", "buonasera come stai", "salve come stai"];
+const _firsFrase = ["ciao" ,"buongiorno", "salve", "ciao come stai","buongiorno come stai", "salve come stai"];
+const _nigthFrase = ["buonasera","buonasera come stai"];
 const _secondStep = ["come stai", "come va" ,"come la situazione"];
 const _youreName = ["come ti chiami", "come si chiama" ,"come il tuo nome", "come si chiami", "come ti chiamano"];
 const _action = ["torna indietro", "fai vedere prodotti", "fammi vedere prodotti","torna al menù precedente", "torna al menù precedente", "esci di qua"];
-const _whatTime = ["che ora sono", "dimmi che ora", "lo sai che ora sono", "che ora"];
+const _whatTime = ["che ora sono", "dimmi che ora", "lo sai che ora sono", "che ora", "che ore sono"];
 const _whatIsWeather = ["che tempo oggi", "come tempo oggi", "che tempo fa oggi", "previsioni per oggi"];
 const _tommoroWeather = ["previsioni per domani", "che tempo fa domani"];
+const _giveRecept = ["ricetta con pollo", "ricetta casuale", "ricette", "ricetta del giorno"];
 
 /* Answers */
-const _aswFrase = [`Ciao ${UserName} come sta?`, `Buongiorno ${UserName} come va?`, `Buonasera ${UserName} come sta?`, `Salve ${UserName} come stai?`];
+const _aswMorinig = [`Ciao ${UserName} come stai?`, `Buongiorno ${UserName} come va?`,`Salve ${UserName} come stai?`];
+const _aswNigth = [`Ciao ${UserName} come stai?`,`Buonasera ${UserName} come stai?`];
 const _aswStep = ["Tutto bene, grazie", "Va tutto bene grazie", "Buonasera tutto bene", "Salve sto bennissimo"];
 const _aswName = ["Mi chiamo Volantino", "Volantino"];
-const _timeIs = [`Ecco : ${_time}`, `Certo sono : ${_time}`];
+const _timeIs = [`Ecco => ${_time.getHours()}:${_time.getMinutes()}`, `Certo sono le ${_time.getHours()}:${_time.getMinutes()}`];
+const _sleepTime = [`E ancora presto sono le ${_time.getHours()} : ${_time.getMinutes()}`];
+
+
 
 const up = document.getElementById('up');
 const down = document.getElementById('footer');
@@ -107,18 +106,47 @@ recognition.addEventListener("result", (e) => {
 
   p.innerText = text;
   
+
+
   if (e.results[0].isFinal) {
+    
+    /* Saluto */
     for(let value of _firsFrase) {
         if (text.toLowerCase().trim().includes(value)) {
         p = document.createElement("p");
         p.classList.add("replay");
         scrollDown(down);
-            const finalText = _aswFrase[Math.floor(Math.random() * _aswFrase.length)];
+        if(realTime < 18) {
+          const finalText = _aswMorinig[Math.floor(Math.random() * _aswMorinig.length)];
                 p.innerText = finalText;
                 texts.appendChild(p);
+        } 
             
         }
     }
+
+    /* Time Controll */
+      for(let value of _nigthFrase){
+      if(text.toLowerCase().trim().includes(value)) {
+        if(realTime > 17) {
+        p = document.createElement("p");
+        p.classList.add("replay");
+        scrollDown(down);
+              for(let frase of _aswNigth) {
+                p.innerText = frase;
+                texts.appendChild(p);
+              }
+      } else {
+    p = document.createElement("p");
+        p.classList.add("replay");
+        scrollDown(down);
+                p.innerText =_sleepTime ;
+                texts.appendChild(p);
+  }
+    }
+  } 
+
+
 for(let value of _youreName) { 
     if (text.toLowerCase().trim().includes(value)) {
       p = document.createElement("p");
@@ -187,7 +215,29 @@ if(text.toLowerCase().trim().includes(value)){
 }   
 
 
+  for(let value of  _giveRecept){
+      if(text.toLowerCase().trim().includes(value)) {
+        const foodFetch = async () => {
+            const _foodRandom = ["chicken", "fish","banana","dessert","asparagus","broccoli","corn","pepper","rice","spaghetti"];
+            const _mixFod = _foodRandom[Math.floor(Math.random() * _foodRandom.length)];
+            const data = await fetch(`https://api.edamam.com/search?q=${_mixFod}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=3&calories=591-722&health=alcohol-free&lang=it`);
+            const resp = await data.json();
+            console.log(resp);
+          console.log("ricetta del giorno");
+          p = document.createElement("p");
+          p.classList.add("replay");
+            p.innerText = `${resp.hits[0].recipe.label} ingredienti: ${resp.hits[0].recipe.ingredientLines[0]}, ${resp.hits[0].recipe.ingredientLines[1]},${resp.hits[0].recipe.ingredientLines[2]}, ${resp.hits[0].recipe.ingredientLines[3]}, ${resp.hits[0].recipe.ingredientLines[4]}, ${resp.hits[0].recipe.ingredientLines[5]}, ${resp.hits[0].recipe.ingredientLines[6]}`;
+          
+          texts.appendChild(p);
+          p = document.createElement("p");
 
+          return;
+        }
+        foodFetch();
+      
+        }
+        scrollDown(down);
+  }
 
 
     for( let value of _action) { 

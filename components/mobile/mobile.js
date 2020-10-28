@@ -17,7 +17,6 @@ var prod1 = document.getElementById('prod1');
     prod2 = document.getElementById('prod2');
     prod3 = document.getElementById('prod3');
     prod4 = document.getElementById('prod4');
-var notFocus = document.querySelector('.focus-none');
 /* TODO: */
 var showTranscript = document.getElementById('transcript');
 
@@ -115,6 +114,7 @@ recognition.onresult = function (event) {
         window.speechSynthesis.speak(speech);
 
       }
+      
 
     for(let value of _shopCat) {
       if (transcript.toLowerCase().trim().includes(value)) {

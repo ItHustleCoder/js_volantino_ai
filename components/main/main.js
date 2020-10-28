@@ -421,7 +421,7 @@ const artyom = new Artyom();
 
             
             //Sicmundus
-            artyom.simulateInstruction("volantino vai alla sezione prodotti");
+            // artyom.simulateInstruction("volantino vai alla sezione prodotti");
                        
             console.log(artyom.getAvailableCommands());
 
