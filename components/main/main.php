@@ -29,7 +29,6 @@ $_SESSION['testing'] = time();
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
-    <link rel="manifest" href="./img/site.webmanifest">
     <title>Volantino più</title>
     <script src="../../artyom.window.js"></script>
 </head>
@@ -68,10 +67,7 @@ $_SESSION['testing'] = time();
              </div>
          </div>
     </div>
-      <audio id="audioMusic">
-        <source src="../../Jump-SoundBible.com-1007297584.mp3">
-      </audio>
-      <a href="#" class="wave-btn" id="btn" onclick="bell()">
+      <a href="#" class="wave-btn" id="btn">
         <span class="wave-btn_text" id="textB">Start</span>
         <span class="wave-btn_waves" id="wave-btn_waves"></span>
     </a>

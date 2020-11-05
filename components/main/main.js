@@ -7,7 +7,6 @@
        const wave = document.getElementById('wave-btn_waves');
        const textButton = document.getElementById('textB');
        const span = document.getElementById('output');
-       const audio = document.getElementById('audioMusic');
        const blinkText = document.getElementById('blink-box');
        const spanRecord = document.getElementById('record');
 
@@ -44,10 +43,7 @@
         const _logOut = [
             "esci dall'account", "attiva protocollo di sicurezza"
         ];
-//Bind Audio button
- function bell() {
-     audio.play();
- }
+
 
  //Call class item and bind name
 const artyom = new Artyom();
@@ -140,23 +136,6 @@ const artyom = new Artyom();
 
 
        //Area categorie
-
-     /*   {
-           indexes: _categoryArea,
-           action: (i) => {
-                   artyom.say("Certo! Andiamo", {
-                    onStart: () => {
-                        console.log('The text has been started');
-                    },
-                    onEnd : () => {
-                        console.log('Text has been finished');
-                        location.href = "../category/category.php";
-                    }
-                   });
-               
-               }
-           
-       }, */
 
        //Area offerte 
 

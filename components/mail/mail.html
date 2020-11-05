@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="stylesheet" href="./css/mail.css">
+    <title>Mail_Annyang</title>
+</head>
+<body>
+    <section class="main">
+        <header>
+          <div class="container">
+            <a href="javascript:void(0)" class="logo">{Volantino Mail}</a>
+            <nav>
+              <ul>
+                <li><i class="fa fa-phone"></i>+91-9650601894</li>
+                <li><i class="fa fa-envelope"></i>volantino@argo.it</li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <section class="video-outer">
+          <video id="myVideo" loop autoplay>
+            <source src="demovideo.mp4" type="video/mp4" />
+          </video>
+          <div class="trs-block">
+            <div class="block-div">
+              <h1 id="text" style="color: chartreuse;padding-right: 1%; font-size: 20px;"></h1>
+              <div id="speechResults"></div>
+            </div>
+          </div>
+          <div class="form-area-outer">
+            <div class="form-area-inner">
+              <h2>Get in touch with us!</h2>
+              <form id="myform">
+                <input type="text" id="uname" placeholder="Nome utente" />
+                <input type="email" id="emailadd" placeholder="Email Address" />
+                <input type="tel" id="telnum" placeholder="Mobile Number" />
+                <textarea id="mymessage" placeholder="Message"></textarea>
+                <button type="submit">Invio</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- <script src="js/annyang.min.js"></script> -->
+      <script src="./src/annyang.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+  
+      <script>
+  
+      window.onload = function () {
+
+      
+        if (annyang) {
+          console.log('Listening: ', SpeechKITT.isListening());
+          annyang.setLanguage('it-IT');
+          let counter = 0;
+          let makeUpperCase = false;
+          
+          var commands = {
+            "play video": function () {
+              document.getElementById('myVideo').play();
+            },
+            "pausa": function () {
+              document.getElementById('myVideo').pause();
+            },
+            "notte": function(){
+              let root = document.documentElement;  
+              root.style.setProperty('--white', '#000');
+              root.style.setProperty('--black', '#fff');
+              console.log("night mode");
+            },
+            "giorno": function(){
+              let root = document.documentElement;  
+              root.style.setProperty('--white', '#fff');
+              root.style.setProperty('--black', '#000');
+              console.log("day mode");
+            },
+
+            /* Name input */
+            'scrivi il nome *tag':function(variable){
+                wirteName(variable);
+            },
+            'scrivi nome *tag':function(variable){
+                wirteName(variable);
+            },
+            'nome *tag':function(variable){
+                wirteName(variable);
+            },
+
+
+            'scrivi email *tag':function(variable){
+               writeEmail(variable);
+                
+            },
+            
+            'email *tag':function(variable){
+               writeEmail(variable);
+                
+            },
+
+            
+            'la mail *tag':function(variable){
+               writeEmail(variable);
+                
+            },
+            
+            'scrivi la mail *tag':function(variable){
+               writeEmail(variable);
+                
+            },
+
+
+            
+            'scrivi il numero *tag':function(variable){
+                writneNum(variable);
+            },
+            'scrivi numero *tag':function(variable){
+                writneNum(variable);
+            },
+            'numero *tag':function(variable){
+                writneNum(variable);
+            },
+            'numero *tag':function(variable){
+                writneNum(variable);
+            },
+
+
+
+
+
+
+            'scrivi messaggio *tag':function(variable){
+                 counter ++;
+                console.log("console :",(counter));
+                let mymessage = document.getElementById("mymessage");
+                if(counter == 1) {
+                  mymessage.value +=variable;
+                  mymessage.focus();
+                } 
+            },
+            'scrivi *tag': function(variable){
+                if(mymessage.value.length > 1 && makeUpperCase == false) {
+                  console.log('Sto qua');
+                  mymessage.value += " ";
+                  let lowCase = variable.toLowerCase();
+                  mymessage.value += lowCase;
+                  mymessage.focus();
+                } else {
+                  let capLet = variable.charAt(0).toUpperCase() + variable.slice(1);
+                  mymessage.value += capLet;
+                }
+            },
+            'cancella' : function () {
+              // let mymessage = document.getElementById("mymessage");
+              mymessage.value = '';
+            },
+            'nuova riga' : function() {
+              mymessage.value += '\n ';
+              makeUpperCase = true;
+            },
+
+
+            "invia": function(e){
+              submitForm();              
+            },
+            "invio": function(e) {
+              submitForm();
+            },
+            "aiuto" : () => {
+              aiuto();
+            },
+
+            "riavvia": () => {
+              setTimeout(() => {
+                location.reload();
+              },300);
+            }
+           
+            
+          };
+
+          /* Command Function */
+          function wirteName (name) {
+            let uname = document.getElementById("uname");
+                uname.value=name;
+                uname.focus();
+          }
+
+
+          function writeEmail(name) {
+            let emailadd = document.getElementById("emailadd");
+                let var2 = name.replace('chiocciola', '@');                
+                emailadd.value=var2.split(" ").join("");
+                emailadd.focus();
+          }
+
+          function writneNum(name) {
+            let mobnum = document.getElementById("telnum");
+                mobnum.value=name;
+                mobnum.focus();
+          }
+          
+          function submitForm() {
+            let myform = document.getElementById("myform");  
+              let formareainner = document.querySelector('.form-area-inner');  
+              let formheading = document.querySelector('.form-area-inner h2'); 
+              myform.remove();
+              formheading.innerHTML = 'La tua risposta e stata inviata con successo'
+              let html = '';
+              html += `<p>Grazie per aver contattato. Attendi per la risposta.</p>`;
+              formareainner.innerHTML += html;
+          }
+
+           /* Normal method:  */
+
+
+    //      let textTranscript = document.getElementById('text');
+
+    //    /* If content loading will be slowly uncomment this lane FIXME: */
+    //         // let startSpeak = annyang.start({ autoRestart: true, continuous: false });
+    //         let endSpeak = annyang.abort();
+    //        // Tell KITT to use annyang
+
+    //        /* TODO: not work */
+    //         // SpeechKITT.annyang({continuous:false, autoRestart: true});
+    //         // Sp eechKITT.startSpeak;
+
+    //         let span = document.createElement('span');
+    //         /* Testing area */
+    //         // SpeechKITT.setStartCommand(function() {annyang.start({autoRestart: true, continuous: false})});
+    //         SpeechKITT.setAbortCommand(function() {annyang.abort();});
+
+    //         annyang.addCallback('result', function(phrases) {
+              
+    //           console.log("I think the user said: ", phrases[0]);
+    //           console.log("But then again, it could be any of the following: ", phrases);
+    //           span.style.color = 'red';
+    //           textTranscript.append(span);
+    //           span.innerHTML = phrases[0];          
+        
+    //         });
+  
+           
+  
+    //       // Add our commands to annyang
+    //       annyang.addCommands(commands);
+  
+    //   // Will call annyang's start method
+    //   SpeechKITT.setStartCommand(annyang.start);
+  
+    //   // SpeechKITT.setStylesheet('themes/flat-midnight-blue.css');
+    //   SpeechKITT.setStylesheet('themes/flat-pomegranate.css');
+  
+    //   SpeechKITT.setInstructionsText('Come posso auitare?')
+  
+    // // Render KITT's interface
+    // SpeechKITT.vroom();
+    
+    
+    
+// User needs to know available commands
+  
+    
+    /* Function area */
+    const aiuto = function() {
+      respond("Ecco la lista che mi hai chiesto : ", Object.keys(commands).join(" <br />"));
+    }
+
+
+
+  function resume() {
+  isListening = true;
+  annyang.resume();
+}
+
+// Stop listening to the mic (but the browser is still listening)
+let textTranscript = document.getElementById('text');
+var isListening;
+function pause() {
+  isListening = false;
+  annyang.pause();
+}
+
+// Turn off the browser's mic
+function abort() {
+  isListening = false;
+  annyang.abort();
+}
+function resume() {
+  isListening = true;
+  annyang.resume();
+}
+
+
+
+    let speechResults = document.getElementById("speechResults");
+    function respond(words, html) {
+        let wordsArr = words.split(" ");
+        textTranscript.innerHTML = "";
+        speechResults.innerHTML = "";
+        console.log(words);
+        speak(words);
+
+        for(var i = 0; i <wordsArr.length; i++) {
+          setTimeout(function(word, x) {
+            textTranscript.append(" " + word);
+
+            if(html && x == wordsArr.length - 1) {
+              speechResults.innerHTML = html;
+            }
+          }, (300 * (i + .5)), wordsArr[i], i);
+        }
+    }
+
+    function speak( text, voiceName) {
+      abort();
+      var msg = new SpeechSynthesisUtterance(text);
+      msg.lang = "it-IT";
+      msg.pitch = 1.1;
+
+      speechSynthesis.speak(msg);
+      msg.onend = resume;
+  }
+
+    function micInput(words) {
+      annyang.getSpeechRecognizer().onresult(mockResult(words));
+    }
+  // Annyang doesn't have a method of testing this without getting actual results. This allows for input from anything
+function mockResult(sentence) {
+  var event = document.createEvent('CustomEvent');
+  event.initCustomEvent('result', false, false, {
+    'sentence': sentence
+  });
+  event.resultIndex = 0;
+  event.results = {
+    'length': function() {
+      return 1;
+    },
+    0: {
+      0: {
+          'transcript': sentence,
+          'confidence': 0.99,
+      }
+    }
+  };
+  Object.defineProperty(event.results[0], 'length', {
+    get: function() {
+      return 1;
+    }
+  });
+  return event;
+};
+function noMatch(results) {
+  respond("Non so che significa \"" + results[0].trim() + "\" . Per favore riprova.");
+}
+    
+annyang.addCommands(commands);
+
+annyang.addCallback('resultNoMatch', noMatch);
+    
+    setTimeout(function() {
+        respond("Ciao! Cominciamo insieme ! Per vedere la lista dei commandi, prova a dire \"Aiuto.\"");
+    }, 500);  
+  
+
+  annyang.start({continuous: false, autoRestart: true});
+  
+  SpeechKITT.setStartCommand(annyang.start);
+  SpeechKITT.setAbortCommand(annyang.abort);
+  SpeechKITT.setStylesheet('themes/flat-pomegranate.css');
+  SpeechKITT.setInstructionsText('Come posso auitare?')
+  SpeechKITT.vroom();
+      
+
+  }
+//Finish onload function
+}
+
+</script>
+</body>
+</html>

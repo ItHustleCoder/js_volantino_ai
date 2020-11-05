@@ -5,6 +5,8 @@ var SpeechRecognition =
 
 if(SpeechRecognition) {
 console.log("Your browser or mobile device supported");
+
+
 //Get all elements
 var btn = document.getElementById('btn_assi');
 var up = document.getElementById('page_up');
@@ -53,19 +55,7 @@ let p = document.createElement('p');
 
 recognition.onresult = function (event) {
     console.log(event.result);
-    // TODO: Previos version
 
-    // var transcript = "";
-    // for (var i = event.resultIndex; i < event.results.length; i++) {
-    //   if (event.results[i].isFinal) {
-    //     transcript = event.results[i][0].transcript;
-    //   } else {
-    //     transcript += event.results[i][0].transcript;
-    //   }
-    //   redOutLoad(transcript);
-    //   console.log(transcript);
-       
-    // }
 
     const transcript = Array.from(event.results)
     .map(result =>  result[0])
@@ -78,6 +68,17 @@ recognition.onresult = function (event) {
 
     console.log(transcript);
     redOutLoad(transcript);
+
+      // TODO: Mobile bug
+      var current = event.resultIndex;
+      var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
+    
+      if(!mobileRepeatBug) {
+        noteContent += transcript;
+        noteTextarea.val(noteContent);
+    }
+
+
 
     function redOutLoad(message) {
       var speech = new SpeechSynthesisUtterance();
