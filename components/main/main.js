@@ -2,6 +2,9 @@
 
        console.log('DOM is loaded');
        
+      
+       
+
        //Get all DOM elements
        const btn = document.getElementById('btn');
        const wave = document.getElementById('wave-btn_waves');
@@ -48,7 +51,10 @@
  //Call class item and bind name
 const artyom = new Artyom();
 
- window.onload = function(){
+/* Uncomment this line for get youre current version */
+// console.log('Show current version', artyom.getVersion());
+ 
+window.onload = function(){
      if(artyom.Device.isChrome){
          
     //Local counter     

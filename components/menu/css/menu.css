@@ -84,5 +84,78 @@ body {
       padding-bottom: 20px;
     }
   }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #000; */
+  }
   
+  p {
+    position: relative;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    /* background: linear-gradient(90deg, #000, #fff, #000); */
+    background: linear-gradient(90deg, rgb(76, 190, 95), rgb(50, 243, 50), rgb(87, 255, 10));
+
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  }
   
+  @keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }
+
+  .container-box {
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 500px;
+  }
+
+  .container-box-none {
+    display: none;
+  }
+  
+  .span-box {
+    position: absolute;
+    top: 28%;
+    width: 88%;
+    color: red;
+  }
+
+  .span-box h1 {
+    text-align: center;
+    color: turquoise;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  #list {
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    margin-top: 4%;
+    
+  }
+  #list li {
+    text-decoration: none;
+    color: yellow;
+    font-weight: bold;
+    font-size: 20px;
+  }

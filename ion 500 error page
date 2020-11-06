@@ -1,0 +1,32 @@
+[33m725a814f46180f0dabaac588495eda59da3e6049[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m Created two category: menu/mail
+[33ma209ff4cdad72f2a5ace1dee4df11163f7b18c2e[m[33m ([m[1;31morigin/master[m[33m)[m PC testing IOS - negativ | testing MAC= positiv
+[33m78d752e8fb166afba43c42a83448de7b29054f70[m Refactoring Chat consent to request from HTTP using meta teg insecure-requests
+[33me242d23a7ed4e4a0c02e923ec4f54c0c2d0db2a0[m Pc/Created wheater API bot in Chat section
+[33m608059742844c4afce4b3681c50383e455f4a98f[m PC todo fetch with weather statistcs
+[33mbbb0380cc8b462403b61eb7c4d7ace284ef93e9c[m DB config
+[33m250ba9ce26b64dadb5f3a79ebf04dbdbd36e7bb5[m PC refactoring and fixing version
+[33m4879059116802c88e808ae6d90f7a4b088638b11[m PC: changed chat.php work witch SESSION
+[33m82faf6538a06fadd5b9845a963264ee10167111f[m PC: refactoring mobile version 500 error page
+[33m9fa6b8a326f40fbc1e3480935abbbece63c394f9[m PC created chatbot
+[33m8a9c7758fc4c17811d23c663a359f429fe077547[m Merge branch 'mr_robot' into master
+[33mba09a1fb62ed174ecc30c3a5a2f75091bde59df6[m[33m ([m[1;32mmr_robot[m[33m)[m Merge settup
+[33ma70f82947844d386ca95daddb1798462fd07339a[m PC befour pull
+[33mf3a5af079c54b27d821c4df27a4a57ba150dbef2[m Notebook  transcrip frase
+[33m0b45045b89670e09b1ac78d334876b3037c36a1c[m Canceled category
+[33mf0081294b85d68c57d9d77dccdb87fc968550fdd[m PC refactored img in redirect
+[33med84f4e61e056fca18cc66dd21fa8675467bcbbb[m Notebook..testign checkbox working
+[33mda9340a52149c47573b07f7139b1c1f30c911563[m PC refactoring favicon volantino and checkbox
+[33me9f04afc526168dc8539147623c86c6afbfa5668[m Merge branch 'master' of https://github.com/ItHustleCoder/js_volantino_ai into master
+[33m24d0ce59d6b02d948626c833d15bb1255df9bb06[m PC: befour pull ask
+[33m9661e92841e534310dd879b5be7519dc106e7ba7[m Notebook refactoring added volantino list
+[33m0b2822310e46756d0ecf62124c4a0492e1fee339[m Refatcotring: provided different mode for IOS and not supported borwser. Created Mobile categorie with Speech to text settings
+[33m787501abf10a55d06705ca6ac1dc9bea527baf00[m Refactore: Created new category/ Combination Speech API with Artyom in section category
+[33mc03741213e5fb61bb941394229f065cba65ee479[m N.B: cancel categorie
+[33mb46139e4f352c4824188e612fe4f0aa634321ac8[m Adaptive refactoring, mobile adaptive
+[33m5a3a18aa643061da19389d82ac006a8aa66058ea[m Refactoring: 1.changed SESSION cotnroll autorization 2.hello.php now have image. 3.Direct access with Url disable.4 50min SESSION lifeTime
+[33m720fc79e91e379788ac957a78dbf416f4661ca14[m Refatctoring: update function, enable contiunious{true}, created autorization system
+[33mac115e9d617dd087a289492752c5320547287706[m Update
+[33m0ed529bc5c3ba7184f054da68e36f6942f9668d5[m responsive modification
+[33mf6f5dde52f55b42478a54fb8e3b753eadebd70e3[m Testing  continuos mode: created category => offerte
+[33m1712f899618940029512df3e1d47af8da6bef644[m Apply smart command and new functionality
+[33mcd4b12825b1677e6b1018582dd367bc1e53e822b[m Refactor code: Add NOT_MATCH trigger, artyom.on and switch operator
