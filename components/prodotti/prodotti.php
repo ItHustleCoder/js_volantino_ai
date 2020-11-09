@@ -23,7 +23,7 @@ if (!($_SESSION['user_name'])) {
     <link href="./prodotti.css" rel="stylesheet">
 
     <!-- import Artyom -->
-    <script src="../../artyom.window.js"></script>
+    <script src="../../includes/artyom.window.js"></script>
 
 </head>
 
