@@ -29,7 +29,7 @@ $_SESSION['testing'] = time();
     <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/menu.css">
-    <script src="../../artyom.window.js"></script>
+    <script src="../../includes/artyom.window.js"></script>
 <title>Menu</title>
 </head>
 <body>
@@ -50,9 +50,9 @@ $_SESSION['testing'] = time();
     <ul class="nav navbar-nav">
       <li><a href="../main/main.php">Main</a><span class="hover"></span></li>
       <li><a href="#">Prodotti</a><span class="hover"></span></li>
-      <li><a href="#">Mail</a><span class="hover"></span></li>
+      <li><a href="../mail/mail.html">Mail</a><span class="hover"></span></li>
       <li><a href="#">Mobile</a><span class="hover"></span></li>
-      <li><a href="#">Chat</a><span class="hover"></span></li>
+      <li><a href="../form/form.php">Crea account</a><span class="hover"></span></li>
     </ul>
   </div>
   </div>

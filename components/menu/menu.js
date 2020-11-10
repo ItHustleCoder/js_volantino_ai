@@ -18,6 +18,7 @@ const jarvice = new Artyom();
 
     /* Counter/timer */
     let _counterClick = 0;
+    let _caioPlay = 0;
 
     
     
@@ -45,6 +46,9 @@ const jarvice = new Artyom();
                         onEnd: () => {
                            getCommandList();
                            jarvice.obey();
+                           setTimeout(() => {
+                                list.style.display = 'none';
+                           },3000);
                         }
                        });       
                 }    
@@ -63,7 +67,7 @@ const jarvice = new Artyom();
         },
         
         {
-            indexes: ["javrvice fai panino", "fai pannino","panino", "pannino"],
+            indexes: ["fai pannino","panino", "pannino"],
             action: (i) => {
                 jarvice.say("Ok boss", {
                     onStart : () => {
@@ -78,10 +82,16 @@ const jarvice = new Artyom();
                             smart:true,
                             options:["metti *","senza *", "fai con *", "solito"],
                             beforePrompt: () => {
-                                console.log("Before ask");
+                                jarvice.dontObey();
+                                textTranscript.innerHTML = "Opzioni: metti {..cibo}/ senza {..}, ";
+                                
                             },
                             onStartPrompt:  () => {
-                                console.log("The prompt is being executed");
+                                textTranscript.innerHTML = "Attendi...";
+                                setTimeout(() => {
+                                    jarvice.obey();
+                                    textTranscript.innerHTML = "Risposta...";    
+                                },1000)
                             },
                             onEndPrompt: () => {
                                 console.log("The prompt has been executed succesfully");
@@ -93,7 +103,16 @@ const jarvice = new Artyom();
                         
                                 if( i == 0 || i == 2) {
                                     action = () => {
-                                        jarvice.say(`Il panino con  ${wildcard} e pronto`);
+                                        jarvice.say(`Il panino con  ${wildcard} e pronto, buon apettito ${nameUsr}`, {
+                                            onStart: () => {
+                                                jarvice.dontObey();
+                                                textTranscript.innerHTML = `Il panino con  ${wildcard} e pronto`;
+                                            },
+                                            onEnd: () => {
+                                                jarvice.obey();
+                                                textTranscript.innerHTML = `Il panino pronto buon apetito ${nameUsr}`;
+                                            }
+                                        });
                                         
                                     }
                                 }
@@ -120,158 +139,13 @@ const jarvice = new Artyom();
                 })
             }
         },
-        {
-            indexes: ["jarvice ti ricordi", "ti ricordi i ragazzi"],
-            action: (i) => {
-                jarvice.say("Ecco mi", {
-                    onStart : () => {
-                        jarvice.dontObey();
-                    },
-                    onEnd: () => {
-                        
-                        console.log("Sto in onEND");
-                        jarvice.newPrompt({
-                            question:"Ciao boss non mi ricordo bene ho memoria piccola?",
-                            //We set the smart property to true to accept wildcards
-                            smart:true,
-                            options:["sono *","anche *", "fai con *", "solito"],
-                            beforePrompt: () => {
-                                jarvice.dontObey();
-                            },
-                            onStartPrompt:  () => {
-                                console.log("The prompt is being executed");
-                                jarvice.obey();
-                            },
-                            onEndPrompt: () => {
-                                console.log("The prompt has been executed succesfully");
-                            },
-                            onMatch: (i,wildcard) => {// i returns the index of the given options
-                                var action;
-                        
-                                let text = wildcard;
-                                // var totalCentimeters = parseInt(wildcard);
-                                if(i === 0 ) {
-                                    if( text.includes("Anna") || text.includes("anna")) {
-                                        jarvice.say(`Certo che ricordo ${wildcard} come stai? come la famiglia?`, {
-                                            onStart: () => {
-                                                jarvice.dontObey();
-                                                textTranscript.innerHTML = `Certo che ricordo ${wildcard} come stai? come la famiglia?`;
-                                            },
-                                            onEnd: () => {
-                                                jarvice.obey();
-                                                textTranscript.innerHTML = 'Scopri la lista dei commandi lanciando commando "aiuto"';
-                                            }
-                                        });
-                                    }else {
-                                        jarvice.say(`Non conosco chi e ${wildcard} vogliamo aggiungere  ${wildcard}`, {
-                                            onStart: () => {
-                                                jarvice.dontObey();
-                                                textTranscript.innerHTML = `Non conosco chi e ${wildcard} vogliamo aggiungere  ${wildcard}`;
-                                            },
-                                            onEnd: () => {
-                                                jarvice.obey();
-                                                textTranscript.innerHTML = 'Dici "certo +.. " o "no+ .."';
-                                                jarvice.on(["certo", "no"]).then(function(i) {
-                                                    if(i === 0) {
-                                                        jarvice.say("Ok inizio protocollo di registrazione", {
-                                                            onStart: () => {
-                                                                textTranscript.innerHTML = 'Ok inizio protocollo di registrazione';
-                                                                jarvice.dontObey();
-                                                            },
-                                                            onEnd : () => {
-                                                                textTranscript.innerHTML = '';
-                                                                jarvice.obey();
-                                                                jarvice.newPrompt({
-                                                                    question: "come il nome dell'utente",
-                                                                    smart: true,
-                                                                    options: ["si chiama *", "non lo so *"],
-                                                                    befourPrompt: () => {
-                                                                        jarvice.dontObey();
-                                                                    },
-                                                                    onStartPrompt: () => {
-                                                                        jarvice.obey();
-                                                                        textTranscript.innerHTML = 'esempio: si chiama Andrew';
-                                                                    },
-                                                                    onEndPrompt: () => {
-                                                                        textTranscript.innerHTML = 'esempio: si chiama Andrew';                                                                    },
-                                                                    onMatch: (i, wildcard) => {
-                                                                        var action;
-                                                                        let text = wildcard;
-                                                                            if(i === 0) {
-                                                                                jarvice.say(`Utente con il nome ${text} e stato creato`, {
-                                                                                    onStart: () => {
-                                                                                        jarvice.dontObey();
-                                                                                        textTranscript.innerHTML = `Utente con il nome ${text} e stato creato`;
-                                                                                         
-                                                                                    },
-                                                                                    onEnd: () => {
-                                                                                        textTranscript.innerHTML = `Benvenuto in team ${text}`;
-                                                                                        setTimeout(() => {
-                                                                                            jarvice.obey();
-                                                                                            textTranscript.innerHTML = 'scopri la lista dei commandi lanciando commando "aiuto"';
-
-                                                                                        },3000)
-                                                                                        arrNameDB =  nameDB.push(text);
-                                                                                        console.log('New array:',arrNameDB);
-                                                                                        
-
-                                                                                    }
-    
-                                                                                })
-                                                                            }
-                                                                        return action;
-                                                                    }
-                                                                })
-                                                            }
-                                                        });
-                                                    }
-                                                    if(i === 1) {
-                                                        jarvice.say('Ok', {
-                                                            onStart: () => {
-                                                                jarvice.dontObey();
-                                                            },
-                                                            onEnd: () => {
-                                                                setTimeout(() => {
-                                                                    textTranscript.innerHTML = 'scopri la lista dei commandi lanciando commando "aiuto"';
-                                                                    jarvice.obey();
-                                                                }, 1000);
-                                                            }
-                                                        })
-                                                    }
-                                                   
-                                                });
-                                            }
-                                        });
-                                    }
-
-                                  
-
-                                }
-                                
-                                                        
-                                // A function needs to be returned in onMatch event
-                                // in order to accomplish what you want to execute
-                                return action;                       
-                            }
-                        });
-
-                    }
-                })
-            }
-        },
-
         
 
         
     
     ];
 
-    /* INSERT DB data */
-    let nameDB = [];
-    let passDB = '';
-
-    let arrNameDB = [];
-    console.log('Must be signed', arrNameDB);
+    
 
  
     jarvice.on(['ciao', 'Ciao']).then(() => {
@@ -283,27 +157,111 @@ const jarvice = new Artyom();
 
                 },
                 onEnd: () => {
-                    jarvice.obey();
-                    textTranscript.innerHTML = '';
+                    textTranscript.innerHTML = 'Attendi....';
+                    setTimeout(() => {
+                        jarvice.obey();
+                        textTranscript.innerHTML = "voice attivo";
+                    },2000);
                 }
             })
-        }else {
-            jarvice.say(`Ciao ${nameUsr}`, {
-                onStart: () => {
-                    jarvice.dontObey();
-                    textTranscript.innerHTML = `Ciao ${nameUsr}`;
-
-                },
-                onEnd : () => {
-                    jarvice.obey();
-                    textTranscript.innerHTML = '';
-                }
-            });
         }
+      
     });
+
+    jarvice.on(["fai presentazione", "volantino start"]).then((i) => {
+        if(i === 0 || i === 1){ 
+        jarvice.say("Ecco mi", {
+            onStart:() => {
+                jarvice.dontObey();
+
+            },
+            onEnd: () => {
+                jarvice.obey();
+                jarvice.newPrompt({
+                    question: "Vuoi che ti faccio introduzione delle funzioni volantino?",
+                    options: ["sì", "no"],
+                        beforePrompt: () => {
+                            jarvice.dontObey();
+                            textTranscript.innerHTML = "Vuoi che ti faccio introduzione delle funzioni volantino?";
+                        },
+                        onStartPrompt: () => {
+                            jarvice.obey();
+                            textTranscript.innerHTML = "Rispondi sì{text}.. no{text} esempio{no, grazie}";
+                            
+                        },
+                        onMatch: (i) => {
+                            var action;
+                            if(i === 0) {
+                                jarvice.say("Ok ci sono cinque sezione in totale con diversi possibilità", {
+                                    onStart: () => {
+                                        textTranscript.innerHTML = "Ok ci sono chinque sezione in totale con diversi possibilite";
+                                        jarvice.dontObey();
+                                    },
+                                    onEnd:() => {
+                                        setTimeout(() => {
+                                            jarvice.say("Prima sezione si chiama Main ma alla fine dobbiamo rinominarla in area divertimento può raccontare le barzellette è abbastanza interattivo", {
+                                                onStart:() => {
+                                                    jarvice.dontObey();
+                                                    textTranscript.innerHTML = "Prima sezione si chiama Main ma alla fine dobbiamo rinominarla in area divertimento può raccontare le barzellette è abbastanza interattivo";
+                                                },
+                                                onEnd: () => {
+                                                    jarvice.obey();
+                                                    jarvice.newPrompt({
+                                                        question: "Vuoi continuare o ti sei scocciato?",
+                                                        options: ["sì", "no"],
+                                                            beforePrompt:() => {
+                                                                jarvice.dontObey();
+                                                            },
+                                                            onStartPrompt: () => {
+                                                                jarvice.obey();
+                                                                textTranscript.innerHTML = "Rispondi sì o no";
+                                                            },
+                                                            onMatch: (i) => {
+                                                                var action;
+                                                                if(i === 0 || i === 1) {
+                                                                    jarvice.say("Ok cominciamo divertimento", {
+                                                                        onStart: () => {
+                                                                            jarvice.dontObey();
+                                                                        },
+                                                                        onEnd:() => {
+                                                                            jarvice.obey();
+                                                                        }
+                                                                    })
+                                                                }
+
+                                                                return action;
+                                                            }
+                                                    })
+                                                }
+                                            });
+
+                                        },700);
+                                    }
+                                });
+                            }
+                            if(i === 0) {
+                                jarvice.say("Ok, meglio cosi", {
+                                    onStart: () => {
+                                        jarvice.dontObey();
+                                        textTranscript.innerHTML = 'OK, meglio cosi';
+                                    },
+                                    onEnd: () => {
+                                        jarvice.obey()
+                                    }
+                                })
+                            }
+
+                            return action;
+                        }                 
+                });
+            }
+        });
+    }
+    });
+
+
     jarvice.addCommands(commands);
 
-    console.log('I will be empty if name not assign or :', nameDB);
 
     console.log(nameUsr);
 
@@ -327,7 +285,7 @@ const jarvice = new Artyom();
             jarvice.say(`Benvenuto ${nameUsr}`);
         }
 /* Sicmundus */
-        jarvice.simulateInstruction("jarvice ti ricordi"); 
+        jarvice.simulateInstruction("fai presentazione");
     }
     function stopRecord() {
         jarvice.shutUp();

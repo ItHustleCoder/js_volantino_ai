@@ -26,15 +26,23 @@ $_SESSION['testing'] = time();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nuovo Utente</title>
+    <title>Crea account</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel= "stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="../../includes/artyom.window.js"></script>
     <script src="../../includes/annyang.js"></script>
 </head>
 <body>
     <div class="registration-form">
+        <span id="hello_user">Hello <?php echo $_SESSION['name'] ?></span>
         <form id="form-in" >
             <div class="form-icon">
                 <span><i class="icon icon-user"></i></span>
@@ -70,6 +78,34 @@ $_SESSION['testing'] = time();
             </div>
         </div>
     </div>
+
+    <div class="text-center">
+	<!-- Button HTML (to Trigger Modal) -->
+	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>						
+				<h4 class="modal-title w-100 title-ct">Seiete sicuro?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Che vuolete uscire dall'account. Data compilati in questa sessione saranno persi</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+                <button type="button" class="btn "><a href="../menu/menu.php">Si</a></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+			</div>
+		</div>
+	</div>
+</div>     
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script>
@@ -82,7 +118,7 @@ $_SESSION['testing'] = time();
                 var fname = $("#username").val();
                 var fpass = $("#password").val();
                 var femail = $("#email").val();
-                var fphone = $("#phone-number").val();
+                /* var fphone = $("#phone-number").val(); */
 
                 e.preventDefault();
                     $.ajax({
@@ -93,20 +129,42 @@ $_SESSION['testing'] = time();
                             fname: fname,
                             fpass: fpass,
                             femail: femail,
-                            fphone: fphone,
+                            
 
                         },
-                        success: function() {
-                            alert("Success");
+                        success: function(data) {
+                            console.log(`Success ${data}`);
                         }
+                      
                     });
             })
 
 
         })
 
+        var newUsr;
+
+       $.ajax({
+                        type:"POST",
+                        url: "vendor/session_data.php",
+                       
+                        complete: function(data) {
+                            console.log(`Success ${data}`);
+                            
+                                // newUsr = data.responseText;
+                                // console.log(newUsr);
+                                
+                        }
+                      
+        });
+         
         var nameUsr;
         nameUsr = "<?php echo $_SESSION['name'] ?>"
+
+       
+        newUser = "<?php echo $_SESSION['test'] ?>";
+        console.log(`Ecco nuovo uttente e : ${newUser}`);
+       
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
     <script src="./form.js"></script>

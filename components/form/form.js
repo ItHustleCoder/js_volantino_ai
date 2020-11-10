@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded...");
-    // console.log(nameUsr)
+    // console.log(`Ecco il nuovo : ${ newUser}`);
     window.onload = function() {
     const jarvice = new Artyom();
     
@@ -12,14 +12,12 @@ window.addEventListener("DOMContentLoaded", () => {
         let passw = document.getElementById("password");
         let nameW = document.getElementById("username");
         let emailW = document.getElementById("email");
-        let passCheck = passw.length;
-        let nameCheck = nameW.length;
-        let emailCheck = emailW.length;
     
     
         
         /* Counter/timer */
         let _counterClick = 0;
+        let _nameCounter = 0;
     
             
     
@@ -39,6 +37,9 @@ window.addEventListener("DOMContentLoaded", () => {
                             onEnd: () => {
                                getCommandList();
                                jarvice.obey();
+                               setTimeout(() => {
+                                    list.style.display = 'none';
+                               },4000)
                             }
                            });       
                     }    
@@ -50,16 +51,19 @@ window.addEventListener("DOMContentLoaded", () => {
      
         jarvice.on(['ciao', 'ripeti']).then((i) => {
             if(i === 0 ){
-                if(nameUsr.includes('Onofrio')) {
+                if(nameUsr.includes('Onofrio') && _nameCounter < 1) {
                     jarvice.say(`Ciao ${nameUsr} come stai? ho visto che sei sempre triste, vuoi che ti racconto una barzelletta`, {
                         onStart: () => {
                             jarvice.dontObey();
+                            _nameCounter ++;
                             textTranscript.innerHTML = `Ciao ${nameUsr} come stai? ho visto che sei sempre triste, vuoi che ti racconto una barzelletta`;
         
                         },
                         onEnd: () => {
-                            jarvice.obey();
                             textTranscript.innerHTML = '';
+                            setTimeout(() => {
+                                jarvice.obey();
+                            },1000);
                         }
                     })
                 }else {
@@ -102,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                     jarvice.dontObey();                                   
                                 },
                                 onStartPrompt: () => {
-                                    textTranscript.innerHTML = "Rispondi 'Si giusto' o 'No '";
+                                    textTranscript.innerHTML = "Rispondi 'Sì giusto' o 'No '";
                                     setTimeout(() => {
                                         jarvice.obey();
                                         textTranscript.innerHTML = "Risposta..:"
@@ -118,8 +122,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                                     jarvice.dontObey();
                                                 },
                                                 onEnd: () => {
-                                                    let email = document.getElementById("email");
-                                                    email.focus();
+                                                    emailW.focus();
                                                     jarvice.obey();
                                                 }
                                             });
@@ -183,8 +186,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 },
                                                 onEnd: () => {
                                                     jarvice.obey();
-                                                    let pass = document.getElementById("password");
-                                                    pass.focus();
+                                                    passw.focus();
                                                 }
                                             });
                                         }
@@ -291,7 +293,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
                                                 },
                                                 onEnd: () => {
-                                                    textTranscript.innerHTML = "Inserite la password per attivare voice spegni/accendi button o pronucni la commando ok volantino";
+                                                    textTranscript.innerHTML = "Inserite la password per attivare commandi vocale spegni/accendi button o pronucni 'volantino start'";
                                                     let pass = document.getElementById('password');
                                                     pass.focus();
                                                 }
@@ -311,10 +313,19 @@ window.addEventListener("DOMContentLoaded", () => {
             jarvice.say("Se tutti campi inseriti la forma sàra inviata", {
                 onStart:() => {
                     jarvice.dontObey();
+                    textTranscript.innerHTML = "Se tutti campi inseriti la forma sàra inviata";
                 },
                 onEnd: () => {
-                    let inF = document.getElementById("form-in");
-                    inF.submit();                    
+                    textTranscript.innerHTML = "Attendi...";
+                    jarvice.obey();
+                    let inF = document.getElementById("btn-send");
+                    inF.click();
+                    setTimeout(() => {
+                        passw.value = '';
+                        nameW.value = '';
+                        emailW.value = '';
+                        textTranscript.innerHTML = "Uttente creato con successo";
+                    },600);
                 }
 
         });
@@ -363,6 +374,52 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        // jarvice.on(["test"]).then((i) => {
+        //     if(i === 0) {
+        //         jarvice.say(`Sì certo il nuovo uttente registrato sì chiama ${newUser}`);
+        //     }
+        // });
+
+        jarvice.on(["volantino esci"]).then((i) => {
+            if(i === 0) { 
+            jarvice.say("Attenzione?", {
+                onStart: () => {
+                    jarvice.dontObey();
+                    let btnTrig = document.querySelector(".trigger-btn");
+                    btnTrig.click();
+                },
+                onEnd: () => {
+                    jarvice.obey();
+                    jarvice.newPrompt({
+                        question: "Per abbandonare scegli opzione si per rimanere opzione no",
+                        options: ["sì" ,"no"],
+                            beforePrompt: () => {
+                                jarvice.dontObey();
+                            },
+                            onStartPrompt: () => {
+                                setTimeout(() => {
+                                    jarvice.obey();
+                                },300)
+                            },
+                            onMatch: (i) => {
+                                var action;
+                                    if(i === 0) { 
+                                        location.href = "../menu/menu.php";
+                                    }
+                                    if(i === 1) {
+                                       let close = document.querySelector('.close');
+                                       close.click();
+                                    }
+
+                                return action;
+                            }
+                    });
+                }
+            
+            });
+        }
+        });
+
 
         jarvice.addCommands(commands);
     
@@ -390,7 +447,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 jarvice.say(`Benvenuto ${nameUsr}`);
             }
     /* Sicmundus */
-            // jarvice.simulateInstruction(""); 
+            // jarvice.simulateInstruction("scrivi la password 331231");
         }
         function stopRecord() {
             jarvice.shutUp();
@@ -426,7 +483,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     
     
-        // jarvice.simulateInstruction("aiuto");
+       
     
 
         /* Function Area TODO: */
@@ -448,6 +505,9 @@ window.addEventListener("DOMContentLoaded", () => {
               pass.value = name;
               pass.focus();
           }
+
+
+          
 
     
     
