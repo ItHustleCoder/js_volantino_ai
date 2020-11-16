@@ -1,10 +1,6 @@
 <?php
 
 $sname= "localhost";
-/* $unmae= "testing3";
-$password = "AoZm0FkLMQz5QTG";
-
-$db_name = "testing3"; */
 
 
 /* Locale */
